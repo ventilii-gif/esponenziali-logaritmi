@@ -171,7 +171,7 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
 <section class="scene active" id="home">
   <div class="card">
     <h2>Esponenziali e logaritmi, passo per passo</h2>
-    <p>L'<strong>esponenziale</strong> <em>aˣ</em> e il <strong>logaritmo</strong> <em>logₐx</em> sono due funzioni inverse: capire l'una aiuta a padroneggiare l'altra. In questa app trovi una sezione di richiami e quattro sezioni dedicate alla risoluzione di <strong>equazioni</strong> e <strong>disequazioni</strong>.</p>
+    <p>L'<strong>esponenziale</strong> <em>aˣ</em> e il <strong>logaritmo</strong> <em>log<sub>a</sub>x</em> sono due funzioni inverse: capire l'una aiuta a padroneggiare l'altra. In questa app trovi una sezione di richiami e quattro sezioni dedicate alla risoluzione di <strong>equazioni</strong> e <strong>disequazioni</strong>.</p>
     <p>Ogni sezione è organizzata sempre nello stesso modo, in quattro parti:</p>
     <ul>
       <li>📖 <strong>Teoria</strong> — concetti, formule e diagrammi;</li>
@@ -220,41 +220,41 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
 
       <h3>Definizione di logaritmo</h3>
       <p>Il logaritmo risponde alla domanda «<em>a che esponente devo elevare la base per ottenere l'argomento?</em>»</p>
-      <div class="formula">logₐb = c  ⟺  aᶜ = b   (a &gt; 0, a ≠ 1, b &gt; 0)</div>
-      <div class="ex"><b>Es.</b> log₂8 = 3 perché 2³ = 8; log₁₀1000 = 3; log₃(1/9) = −2.</div>
+      <div class="formula">log<sub>a</sub>b = c  ⟺  aᶜ = b   (a &gt; 0, a ≠ 1, b &gt; 0)</div>
+      <div class="ex"><b>Es.</b> log<sub>2</sub>8 = 3 perché 2³ = 8; log<sub>10</sub>1000 = 3; log<sub>3</sub>(1/9) = −2.</div>
 
       <h3>Proprietà dei logaritmi</h3>
-      <div class="formula">logₐ(x·y) = logₐx + logₐy</div>
-      <div class="formula">logₐ(x/y) = logₐx − logₐy</div>
-      <div class="formula">logₐ(xⁿ) = n · logₐx</div>
-      <div class="formula">logₐ1 = 0 ; logₐa = 1 ; logₐx = ln x / ln a</div>
+      <div class="formula">log<sub>a</sub>(x·y) = log<sub>a</sub>x + log<sub>a</sub>y</div>
+      <div class="formula">log<sub>a</sub>(x/y) = log<sub>a</sub>x − log<sub>a</sub>y</div>
+      <div class="formula">log<sub>a</sub>(xⁿ) = n · log<sub>a</sub>x</div>
+      <div class="formula">log<sub>a</sub>1 = 0 ; log<sub>a</sub>a = 1 ; log<sub>a</sub>x = ln x / ln a</div>
 
       <h3>La funzione logaritmica</h3>
-      <div class="formula">f(x) = logₐx ,  inversa di aˣ</div>
+      <div class="formula">f(x) = log<sub>a</sub>x ,  inversa di aˣ</div>
       <ul>
         <li>dominio (0, +∞): l'argomento deve essere <strong>&gt; 0</strong>;</li>
-        <li>passa per <strong>(1, 0)</strong> perché logₐ1 = 0;</li>
+        <li>passa per <strong>(1, 0)</strong> perché log<sub>a</sub>1 = 0;</li>
         <li>crescente se a &gt; 1, decrescente se 0 &lt; a &lt; 1;</li>
         <li>asintoto verticale x = 0.</li>
       </ul>
-      <div class="diagram"><canvas id="cv-basi-th2"></canvas><p class="cap">y = aˣ e y = logₐx sono simmetriche rispetto alla retta y = x (funzioni inverse).</p></div>
+      <div class="diagram"><canvas id="cv-basi-th2"></canvas><p class="cap">y = aˣ e y = log<sub>a</sub>x sono simmetriche rispetto alla retta y = x (funzioni inverse).</p></div>
       <div class="warn">⚠️ Si scrive <em>ln x</em> per il logaritmo naturale (base e ≈ 2,718) e <em>log x</em> per la base 10.</div>
     </div>
   </div>
 
   <div class="subpanel" data-sub="sim">
     <div class="card">
-      <h2>🎛️ Esplora aˣ e logₐx</h2>
+      <h2>🎛️ Esplora aˣ e log<sub>a</sub>x</h2>
       <p>Muovi la base <em>a</em> e osserva come cambia la curva. Attiva l'inversa per vedere la simmetria rispetto a y = x.</p>
       <div class="diagram"><canvas id="cv-basi-sim"></canvas></div>
       <div class="sim-controls">
         <div class="ctrl"><label>base a</label><input type="range" id="basi-a" min="0.2" max="5" step="0.05" value="2" oninput="smBasi()"><span class="v" id="basi-a-val">2.00</span></div>
-        <div class="ctrl chk"><input type="checkbox" id="basi-inv" onchange="smBasi()"><label for="basi-inv">mostra l'inversa y = logₐx</label></div>
+        <div class="ctrl chk"><input type="checkbox" id="basi-inv" onchange="smBasi()"><label for="basi-inv">mostra l'inversa y = log<sub>a</sub>x</label></div>
         <div class="ctrl chk"><input type="checkbox" id="basi-id" onchange="smBasi()"><label for="basi-id">mostra la retta y = x</label></div>
         <div><button class="btn" id="basi-anim" onclick="toggleAnim(this,{slider:'basi-a',from:0.25,to:4,step:0.03,update:smBasi})">▶ Anima la base</button></div>
       </div>
       <div class="sim-fb" id="basi-fb"></div>
-      <p class="legend"><b style="color:#5e35b1">━</b> y = aˣ &nbsp; <b style="color:#ef6c00">━</b> y = logₐx</p>
+      <p class="legend"><b style="color:#5e35b1">━</b> y = aˣ &nbsp; <b style="color:#ef6c00">━</b> y = log<sub>a</sub>x</p>
     </div>
   </div>
 
@@ -282,7 +282,7 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
       <div class="ex"><b>Es.</b> 2ˣ = 16 ⟹ 2ˣ = 2⁴ ⟹ x = 4.</div>
       <div class="ex"><b>Es.</b> 3^(x+1) = 81 ⟹ 3^(x+1) = 3⁴ ⟹ x + 1 = 4 ⟹ x = 3.</div>
       <p>Se il secondo membro non è una potenza della base si usa il logaritmo:</p>
-      <div class="formula">aˣ = b  (b &gt; 0)  ⟹  x = logₐb</div>
+      <div class="formula">aˣ = b  (b &gt; 0)  ⟹  x = log<sub>a</sub>b</div>
       <div class="warn">⚠️ Poiché aˣ &gt; 0 per ogni x, un'equazione come aˣ = b con <strong>b ≤ 0</strong> non ha soluzioni.</div>
 
       <div class="diagram"><canvas id="cv-eqesp-th"></canvas><p class="cap">2ˣ = 6: la soluzione è l'ascissa del punto in cui la curva incontra la retta y = 6.</p></div>
@@ -330,25 +330,25 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
 
       <h3>Metodo 1 — con la definizione</h3>
       <p>Quando l'equazione ha la forma «logaritmo uguale a un numero»:</p>
-      <div class="formula">logₐf(x) = b  ⟺  f(x) = aᵇ   (con f(x) &gt; 0)</div>
-      <div class="ex"><b>Es.</b> log₂(x − 1) = 3. C.E.: x − 1 &gt; 0 ⟹ x &gt; 1. Allora x − 1 = 2³ = 8 ⟹ x = 9 (accettabile).</div>
+      <div class="formula">log<sub>a</sub>f(x) = b  ⟺  f(x) = aᵇ   (con f(x) &gt; 0)</div>
+      <div class="ex"><b>Es.</b> log<sub>2</sub>(x − 1) = 3. C.E.: x − 1 &gt; 0 ⟹ x &gt; 1. Allora x − 1 = 2³ = 8 ⟹ x = 9 (accettabile).</div>
 
-      <div class="diagram"><canvas id="cv-eqlog-th"></canvas><p class="cap">log₂x = 3: la soluzione x = 8 è l'ascissa del punto sulla curva con ordinata 3.</p></div>
+      <div class="diagram"><canvas id="cv-eqlog-th"></canvas><p class="cap">log<sub>2</sub>x = 3: la soluzione x = 8 è l'ascissa del punto sulla curva con ordinata 3.</p></div>
 
       <h3>Metodo 2 — uguaglianza degli argomenti</h3>
       <p>Quando ai due membri c'è un logaritmo con la <strong>stessa base</strong>:</p>
-      <div class="formula">logₐf(x) = logₐg(x)  ⟺  f(x) = g(x)   (con f(x) &gt; 0 e g(x) &gt; 0)</div>
+      <div class="formula">log<sub>a</sub>f(x) = log<sub>a</sub>g(x)  ⟺  f(x) = g(x)   (con f(x) &gt; 0 e g(x) &gt; 0)</div>
       <div class="ex"><b>Es.</b> log(x + 2) = log(3x − 4). C.E.: x &gt; −2 e x &gt; 4/3. Uguaglio: x + 2 = 3x − 4 ⟹ x = 3 (accettabile).</div>
       <p>Spesso, prima di applicare il metodo, si usano le proprietà per scrivere un solo logaritmo per membro:</p>
-      <div class="ex"><b>Es.</b> log₂x + log₂(x − 2) = 3 ⟹ log₂[x(x − 2)] = 3 ⟹ x(x − 2) = 8 ⟹ x² − 2x − 8 = 0 ⟹ x = 4 (x = −2 scartata).</div>
+      <div class="ex"><b>Es.</b> log<sub>2</sub>x + log<sub>2</sub>(x − 2) = 3 ⟹ log<sub>2</sub>[x(x − 2)] = 3 ⟹ x(x − 2) = 8 ⟹ x² − 2x − 8 = 0 ⟹ x = 4 (x = −2 scartata).</div>
       <div class="warn">⚠️ Verificare sempre le C.E.: un valore che annulla o rende negativo un argomento <strong>va scartato</strong>, anche se risolve l'equazione algebrica.</div>
     </div>
   </div>
 
   <div class="subpanel" data-sub="sim">
     <div class="card">
-      <h2>🎛️ Risolvi logₐx = b graficamente</h2>
-      <p>La soluzione di logₐx = b è x = aᵇ: l'ascissa del punto della curva y = logₐx con ordinata b. Il dominio è x &gt; 0.</p>
+      <h2>🎛️ Risolvi log<sub>a</sub>x = b graficamente</h2>
+      <p>La soluzione di log<sub>a</sub>x = b è x = aᵇ: l'ascissa del punto della curva y = log<sub>a</sub>x con ordinata b. Il dominio è x &gt; 0.</p>
       <div class="diagram"><canvas id="cv-eqlog-sim"></canvas></div>
       <div class="sim-controls">
         <div class="ctrl"><label>base a</label><input type="range" id="el-a" min="0.2" max="5" step="0.05" value="2" oninput="smEqlog()"><span class="v" id="el-a-val">2.00</span></div>
@@ -423,30 +423,30 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
     <div class="card">
       <h2>📐 Disequazioni logaritmiche</h2>
       <p>Due passaggi obbligatori: prima le <strong>condizioni di esistenza</strong> (tutti gli argomenti &gt; 0), poi il confronto degli argomenti secondo la base. La soluzione finale è l'<strong>intersezione</strong> tra C.E. e disequazione risolta.</p>
-      <div class="formula">a &gt; 1:  logₐf(x) &gt; logₐg(x)  ⟺  f(x) &gt; g(x)</div>
-      <div class="formula">0 &lt; a &lt; 1:  logₐf(x) &gt; logₐg(x)  ⟺  f(x) &lt; g(x)</div>
+      <div class="formula">a &gt; 1:  log<sub>a</sub>f(x) &gt; log<sub>a</sub>g(x)  ⟺  f(x) &gt; g(x)</div>
+      <div class="formula">0 &lt; a &lt; 1:  log<sub>a</sub>f(x) &gt; log<sub>a</sub>g(x)  ⟺  f(x) &lt; g(x)</div>
       <div class="warn">⚠️ Come per le esponenziali, con 0 &lt; a &lt; 1 il verso si <strong>inverte</strong>. E non dimenticare mai le C.E.</div>
 
       <h3>Caso con un numero al secondo membro</h3>
-      <p>Si scrive il numero come logaritmo: b = logₐ(aᵇ).</p>
-      <div class="formula">logₐx = b  ⟹  confronto con  aᵇ</div>
-      <div class="ex"><b>Es.</b> log₂x &gt; 3. C.E.: x &gt; 0. Poi log₂x &gt; log₂8 ⟹ (base &gt; 1) x &gt; 8. Soluzione: x &gt; 8.</div>
-      <div class="ex"><b>Es.</b> log_(1/2)x &gt; 2. C.E.: x &gt; 0. Poi log_(1/2)x &gt; log_(1/2)(1/4) ⟹ (base &lt; 1) x &lt; 1/4. Soluzione: 0 &lt; x &lt; 1/4.</div>
+      <p>Si scrive il numero come logaritmo: b = log<sub>a</sub>(aᵇ).</p>
+      <div class="formula">log<sub>a</sub>x = b  ⟹  confronto con  aᵇ</div>
+      <div class="ex"><b>Es.</b> log<sub>2</sub>x &gt; 3. C.E.: x &gt; 0. Poi log<sub>2</sub>x &gt; log<sub>2</sub>8 ⟹ (base &gt; 1) x &gt; 8. Soluzione: x &gt; 8.</div>
+      <div class="ex"><b>Es.</b> log<sub>1/2</sub>x &gt; 2. C.E.: x &gt; 0. Poi log<sub>1/2</sub>x &gt; log<sub>1/2</sub>(1/4) ⟹ (base &lt; 1) x &lt; 1/4. Soluzione: 0 &lt; x &lt; 1/4.</div>
 
-      <div class="diagram"><canvas id="cv-dislog-th"></canvas><p class="cap">log₂x &gt; 2: soddisfatta dove la curva sta sopra y = 2, cioè per x &gt; 4 (nel dominio x &gt; 0).</p></div>
+      <div class="diagram"><canvas id="cv-dislog-th"></canvas><p class="cap">log<sub>2</sub>x &gt; 2: soddisfatta dove la curva sta sopra y = 2, cioè per x &gt; 4 (nel dominio x &gt; 0).</p></div>
     </div>
   </div>
 
   <div class="subpanel" data-sub="sim">
     <div class="card">
-      <h2>🎛️ Visualizza la soluzione di logₐx ≷ b</h2>
+      <h2>🎛️ Visualizza la soluzione di log<sub>a</sub>x ≷ b</h2>
       <p>Ricorda il dominio x &gt; 0. La fascia arancione mostra le soluzioni; cambia la base per vedere il ribaltamento.</p>
       <div class="diagram"><canvas id="cv-dislog-sim"></canvas></div>
       <div class="sim-controls">
         <div class="ctrl"><label>base a</label><input type="range" id="dl-a" min="0.2" max="5" step="0.05" value="2" oninput="smDislog()"><span class="v" id="dl-a-val">2.00</span></div>
         <div class="ctrl"><label>valore b</label><input type="range" id="dl-b" min="-3" max="3" step="0.25" value="2" oninput="smDislog()"><span class="v" id="dl-b-val">2.00</span></div>
         <div class="ctrl"><label>relazione</label>
-          <select id="dl-dir" onchange="smDislog()"><option value="gt">logₐx &gt; b</option><option value="lt">logₐx &lt; b</option></select></div>
+          <select id="dl-dir" onchange="smDislog()"><option value="gt">log<sub>a</sub>x &gt; b</option><option value="lt">log<sub>a</sub>x &lt; b</option></select></div>
         <div><button class="btn" id="dl-anim" onclick="toggleAnim(this,{slider:'dl-a',from:0.25,to:4,step:0.03,update:smDislog})">▶ Anima la base</button></div>
       </div>
       <div class="sim-fb" id="dl-fb"></div>
@@ -555,14 +555,14 @@ function smBasi(){
   if(inv) curves.push({fn:x=> x>0?logb(x,a):NaN,color:ACC,width:2.6});
   makePlot(cv('cv-basi-sim'),{xmin:-4,xmax:6,ymin:-4,ymax:6,curves,points:[{x:0,y:1,label:'(0,1)'}]});
   const tr=a>1?'crescente':'decrescente', rng=a>1?'a &gt; 1':'0 &lt; a &lt; 1';
-  setHTML('basi-fb',`Con a = <b>${a.toFixed(2)}</b> (${rng}) la funzione y = aˣ è <b>${tr}</b>, passa per (0, 1) e resta sempre positiva. La sua inversa è y = logₐx.`);
+  setHTML('basi-fb',`Con a = <b>${a.toFixed(2)}</b> (${rng}) la funzione y = aˣ è <b>${tr}</b>, passa per (0, 1) e resta sempre positiva. La sua inversa è y = log<sub>a</sub>x.`);
 }
 function smEqesp(){
   const a=getBase('ee-a','ee-a-val'), b=val('ee-b'); setv('ee-b-val',b.toFixed(1));
   const cfg={xmin:-4,xmax:4,ymin:-2,ymax:16,curves:[{fn:x=>Math.pow(a,x),color:PRIMARY,width:2.6}],hlines:[{y:b}]};
   let fb;
   if(b>0){ const x=logb(b,a); cfg.points=[{x,y:b,label:'x = '+fmt(x)}]; cfg.vlines=[{x}];
-    fb=`aˣ = b con a = ${a.toFixed(2)}, b = ${b.toFixed(1)} ⟹ x = logₐb = <b>${fmt(x)}</b>.`; }
+    fb=`aˣ = b con a = ${a.toFixed(2)}, b = ${b.toFixed(1)} ⟹ x = log<sub>a</sub>b = <b>${fmt(x)}</b>.`; }
   else { fb=`b = ${b.toFixed(1)} ≤ 0: poiché aˣ &gt; 0 sempre, l'equazione <b>non ha soluzioni</b>.`; }
   makePlot(cv('cv-eqesp-sim'),cfg); setHTML('ee-fb',fb);
 }
@@ -572,7 +572,7 @@ function smEqlog(){
   const cfg={xmin:-1,xmax:16,ymin:-4,ymax:4,curves:[{fn:t=>t>0?logb(t,a):NaN,color:PRIMARY,width:2.6}],
     hlines:[{y:b}],points:[{x,y:b,label:'x = '+fmt(x)}],vlines:[{x}]};
   makePlot(cv('cv-eqlog-sim'),cfg);
-  setHTML('el-fb',`logₐx = b con a = ${a.toFixed(2)}, b = ${b.toFixed(2)} ⟹ x = aᵇ = <b>${fmt(x)}</b>. (Dominio: x &gt; 0.)`);
+  setHTML('el-fb',`log<sub>a</sub>x = b con a = ${a.toFixed(2)}, b = ${b.toFixed(2)} ⟹ x = aᵇ = <b>${fmt(x)}</b>. (Dominio: x &gt; 0.)`);
 }
 function smDisesp(){
   const a=getBase('de-a','de-a-val'), b=val('de-b'), dir=document.getElementById('de-dir').value;
@@ -605,7 +605,7 @@ function smDislog(){
   const rel = solGreater ? `x &gt; ${fmt(x0)}` : `0 &lt; x &lt; ${fmt(x0)}`;
   const note = a>1 ? 'base &gt; 1 ⟹ verso invariato' : 'base &lt; 1 ⟹ verso invertito';
   makePlot(cv('cv-dislog-sim'),cfg);
-  setHTML('dl-fb',`logₐx ${sym} b con a = ${a.toFixed(2)}, b = ${b.toFixed(2)}: confronto con aᵇ = ${fmt(x0)}; ${note}; C.E. x &gt; 0. Soluzione: <b>${rel}</b>.`);
+  setHTML('dl-fb',`log<sub>a</sub>x ${sym} b con a = ${a.toFixed(2)}, b = ${b.toFixed(2)}: confronto con aᵇ = ${fmt(x0)}; ${note}; C.E. x &gt; 0. Soluzione: <b>${rel}</b>.`);
 }
 
 /* ============ DIAGRAMMI STATICI (Teoria) ============ */
@@ -708,13 +708,13 @@ window.addEventListener('resize',()=>{
 /* ============ PROVA TU ============ */
 const PV={
 basi:[
-  {q:'Calcola log₂ 32.', hints:['Chiediti: 2 elevato a quale esponente dà 32?','32 = 2⁵'],
-   steps:['log₂ 32 = x ⟺ 2ˣ = 32','32 = 2⁵','quindi x = 5'], ans:5},
-  {q:'Calcola log₃ (1/9).', hints:['1/9 è una potenza di 3 a esponente negativo','1/9 = 3⁻²'],
+  {q:'Calcola log<sub>2</sub> 32.', hints:['Chiediti: 2 elevato a quale esponente dà 32?','32 = 2⁵'],
+   steps:['log<sub>2</sub> 32 = x ⟺ 2ˣ = 32','32 = 2⁵','quindi x = 5'], ans:5},
+  {q:'Calcola log<sub>3</sub> (1/9).', hints:['1/9 è una potenza di 3 a esponente negativo','1/9 = 3⁻²'],
    steps:['3ˣ = 1/9','1/9 = 3⁻²','x = −2'], ans:-2},
-  {q:'Semplifica con le proprietà e dai il valore di  log₂ 6 + log₂ 2 − log₂ 3.', hints:['Somma di logaritmi = logaritmo del prodotto; differenza = logaritmo del quoziente','log₂ (6·2/3) = log₂ 4'],
-   steps:['log₂ 6 + log₂ 2 = log₂ 12','log₂ 12 − log₂ 3 = log₂ (12/3) = log₂ 4','log₂ 4 = 2'], ans:2},
-  {q:'Calcola log₁₀ 10000.', hints:['10000 è una potenza di 10','10000 = 10⁴'],
+  {q:'Semplifica con le proprietà e dai il valore di  log<sub>2</sub> 6 + log<sub>2</sub> 2 − log<sub>2</sub> 3.', hints:['Somma di logaritmi = logaritmo del prodotto; differenza = logaritmo del quoziente','log<sub>2</sub> (6·2/3) = log<sub>2</sub> 4'],
+   steps:['log<sub>2</sub> 6 + log<sub>2</sub> 2 = log<sub>2</sub> 12','log<sub>2</sub> 12 − log<sub>2</sub> 3 = log<sub>2</sub> (12/3) = log<sub>2</sub> 4','log<sub>2</sub> 4 = 2'], ans:2},
+  {q:'Calcola log<sub>10</sub> 10000.', hints:['10000 è una potenza di 10','10000 = 10⁴'],
    steps:['10ˣ = 10000 = 10⁴','x = 4'], ans:4}
 ],
 eqesp:[
@@ -728,14 +728,14 @@ eqesp:[
    steps:['Pongo t = 2ˣ (t &gt; 0): t² − 5t + 4 = 0','t = 1 ∨ t = 4 (entrambi &gt; 0)','2ˣ = 1 ⟹ x = 0','2ˣ = 4 = 2² ⟹ x = 2','La soluzione maggiore è x = 2'], ans:2}
 ],
 eqlog:[
-  {q:'Risolvi  log₂(x − 1) = 3  (con la definizione).', hints:['Per definizione log₂ A = 3 ⟺ A = 2³','x − 1 = 8'],
-   steps:['C.E.: x − 1 &gt; 0 ⟹ x &gt; 1','log₂(x − 1) = 3 ⟺ x − 1 = 2³ = 8','x = 9 (accettabile: 9 &gt; 1)'], ans:9},
-  {q:'Risolvi  log₃(2x + 1) = 2.', hints:['2x + 1 = 3²','2x + 1 = 9'],
+  {q:'Risolvi  log<sub>2</sub>(x − 1) = 3  (con la definizione).', hints:['Per definizione log<sub>2</sub> A = 3 ⟺ A = 2³','x − 1 = 8'],
+   steps:['C.E.: x − 1 &gt; 0 ⟹ x &gt; 1','log<sub>2</sub>(x − 1) = 3 ⟺ x − 1 = 2³ = 8','x = 9 (accettabile: 9 &gt; 1)'], ans:9},
+  {q:'Risolvi  log<sub>3</sub>(2x + 1) = 2.', hints:['2x + 1 = 3²','2x + 1 = 9'],
    steps:['C.E.: 2x + 1 &gt; 0','2x + 1 = 9','2x = 8 ⟹ x = 4'], ans:4},
   {q:'Risolvi  log(x + 2) = log(3x − 4)  (base 10, uguaglianza argomenti).', hints:['Stessa base ⟹ uguaglia gli argomenti','x + 2 = 3x − 4'],
    steps:['C.E.: x + 2 &gt; 0 e 3x − 4 &gt; 0 ⟹ x &gt; 4/3','x + 2 = 3x − 4 ⟹ 2x = 6 ⟹ x = 3','x = 3 accettabile (&gt; 4/3)'], ans:3},
-  {q:'Risolvi  log₂ x + log₂(x − 2) = 3.', hints:['Somma di logaritmi = logaritmo del prodotto','log₂[x(x − 2)] = 3 ⟹ x(x − 2) = 2³ = 8'],
-   steps:['C.E.: x &gt; 0 e x − 2 &gt; 0 ⟹ x &gt; 2','log₂[x(x − 2)] = 3 ⟹ x² − 2x = 8','x² − 2x − 8 = 0 ⟹ x = 4 ∨ x = −2','x = −2 scartata (C.E.); resta x = 4'], ans:4}
+  {q:'Risolvi  log<sub>2</sub> x + log<sub>2</sub>(x − 2) = 3.', hints:['Somma di logaritmi = logaritmo del prodotto','log<sub>2</sub>[x(x − 2)] = 3 ⟹ x(x − 2) = 2³ = 8'],
+   steps:['C.E.: x &gt; 0 e x − 2 &gt; 0 ⟹ x &gt; 2','log<sub>2</sub>[x(x − 2)] = 3 ⟹ x² − 2x = 8','x² − 2x − 8 = 0 ⟹ x = 4 ∨ x = −2','x = −2 scartata (C.E.); resta x = 4'], ans:4}
 ],
 disesp:[
   {q:'Risolvi  2ˣ &gt; 8.  La soluzione è x &gt; k: inserisci k.', hints:['8 = 2³','Base 2 &gt; 1: il verso si mantiene'],
@@ -746,12 +746,12 @@ disesp:[
    steps:['3^(2x − 1) &lt; 3³','2x − 1 &lt; 3','2x &lt; 4 ⟹ x &lt; 2','k = 2'], ans:2}
 ],
 dislog:[
-  {q:'Risolvi  log₂ x &gt; 3.  La soluzione è x &gt; k: inserisci k.', hints:['C.E.: x &gt; 0','3 = log₂ 8; base 2 &gt; 1 mantiene il verso'],
-   steps:['C.E.: x &gt; 0','log₂ x &gt; 3 = log₂ 2³','base &gt; 1: x &gt; 8','con x &gt; 0: soluzione x &gt; 8, k = 8'], ans:8},
-  {q:'Risolvi  log₃(x − 1) ≤ 2.  La soluzione è 1 &lt; x ≤ k: inserisci k.', hints:['C.E.: x − 1 &gt; 0 ⟹ x &gt; 1','2 = log₃ 9; base 3 &gt; 1'],
-   steps:['C.E.: x − 1 &gt; 0 ⟹ x &gt; 1','log₃(x − 1) ≤ 2 = log₃ 9','base &gt; 1: x − 1 ≤ 9 ⟹ x ≤ 10','con C.E.: 1 &lt; x ≤ 10, k = 10'], ans:10},
-  {q:'Risolvi  log_(1/2) x &gt; 2.  La soluzione è 0 &lt; x &lt; k: inserisci k.', hints:['C.E.: x &gt; 0','2 = log_(1/2)(1/4); base 1/2 &lt; 1 inverte il verso'],
-   steps:['C.E.: x &gt; 0','log_(1/2) x &gt; 2 = log_(1/2)(1/4)','base &lt; 1 (decrescente): x &lt; 1/4','con x &gt; 0: 0 &lt; x &lt; 1/4, k = 0.25'], ans:0.25, tol:0.001}
+  {q:'Risolvi  log<sub>2</sub> x &gt; 3.  La soluzione è x &gt; k: inserisci k.', hints:['C.E.: x &gt; 0','3 = log<sub>2</sub> 8; base 2 &gt; 1 mantiene il verso'],
+   steps:['C.E.: x &gt; 0','log<sub>2</sub> x &gt; 3 = log<sub>2</sub> 2³','base &gt; 1: x &gt; 8','con x &gt; 0: soluzione x &gt; 8, k = 8'], ans:8},
+  {q:'Risolvi  log<sub>3</sub>(x − 1) ≤ 2.  La soluzione è 1 &lt; x ≤ k: inserisci k.', hints:['C.E.: x − 1 &gt; 0 ⟹ x &gt; 1','2 = log<sub>3</sub> 9; base 3 &gt; 1'],
+   steps:['C.E.: x − 1 &gt; 0 ⟹ x &gt; 1','log<sub>3</sub>(x − 1) ≤ 2 = log<sub>3</sub> 9','base &gt; 1: x − 1 ≤ 9 ⟹ x ≤ 10','con C.E.: 1 &lt; x ≤ 10, k = 10'], ans:10},
+  {q:'Risolvi  log<sub>1/2</sub> x &gt; 2.  La soluzione è 0 &lt; x &lt; k: inserisci k.', hints:['C.E.: x &gt; 0','2 = log<sub>1/2</sub>(1/4); base 1/2 &lt; 1 inverte il verso'],
+   steps:['C.E.: x &gt; 0','log<sub>1/2</sub> x &gt; 2 = log<sub>1/2</sub>(1/4)','base &lt; 1 (decrescente): x &lt; 1/4','con x &gt; 0: 0 &lt; x &lt; 1/4, k = 0.25'], ans:0.25, tol:0.001}
 ]
 };
 const pvState={};
@@ -811,26 +811,26 @@ function nextProva(s){
 /* ============ QUIZ ============ */
 const QUIZ={
 basi:[
-  {t:'mc',q:'La scrittura logₐb = c equivale a:',opts:['aᶜ = b','bᶜ = a','aᵇ = c','a·c = b'],ans:0,exp:'È la definizione di logaritmo: l\'esponente da dare ad a per ottenere b.'},
-  {t:'num',q:'Calcola log₂ 8.',ans:3,exp:'2³ = 8.'},
-  {t:'num',q:'Calcola log₃ 81.',ans:4,exp:'3⁴ = 81.'},
-  {t:'num',q:'Calcola log₅ 1.',ans:0,exp:'logₐ 1 = 0 per ogni base: a⁰ = 1.'},
-  {t:'num',q:'Calcola log₁₀ 1000.',ans:3,exp:'10³ = 1000.'},
-  {t:'num',q:'Calcola log₂ (1/4).',ans:-2,exp:'1/4 = 2⁻².'},
-  {t:'mc',q:'Le condizioni perché logₐb esista sono:',opts:['a &gt; 0, a ≠ 1, b &gt; 0','b &gt; 0 soltanto','a &gt; 1 e b &gt; 1','a qualsiasi, b qualsiasi'],ans:0,exp:'Base positiva e diversa da 1, argomento strettamente positivo.'},
-  {t:'mc',q:'logₐ(x·y) è uguale a:',opts:['logₐx + logₐy','logₐx · logₐy','logₐx − logₐy','logₐ(x+y)'],ans:0,exp:'Il logaritmo di un prodotto è la somma dei logaritmi.'},
-  {t:'mc',q:'logₐ(x/y) è uguale a:',opts:['logₐx − logₐy','logₐx + logₐy','logₐx / logₐy','logₐ(x−y)'],ans:0,exp:'Il logaritmo di un quoziente è la differenza dei logaritmi.'},
-  {t:'mc',q:'logₐ(xⁿ) è uguale a:',opts:['n · logₐx','logₐx ⁿ','n + logₐx','(logₐx)/n'],ans:0,exp:'L\'esponente dell\'argomento esce come fattore.'},
-  {t:'num',q:'Usando le proprietà, quanto vale  log₆ 4 + log₆ 9 ?',ans:2,exp:'log₆(4·9) = log₆ 36 = 2, perché 6² = 36.'},
-  {t:'num',q:'Quanto vale  log₃ 54 − log₃ 2 ?',ans:3,exp:'log₃(54/2) = log₃ 27 = 3.'},
+  {t:'mc',q:'La scrittura log<sub>a</sub>b = c equivale a:',opts:['aᶜ = b','bᶜ = a','aᵇ = c','a·c = b'],ans:0,exp:'È la definizione di logaritmo: l\'esponente da dare ad a per ottenere b.'},
+  {t:'num',q:'Calcola log<sub>2</sub> 8.',ans:3,exp:'2³ = 8.'},
+  {t:'num',q:'Calcola log<sub>3</sub> 81.',ans:4,exp:'3⁴ = 81.'},
+  {t:'num',q:'Calcola log<sub>5</sub> 1.',ans:0,exp:'log<sub>a</sub> 1 = 0 per ogni base: a⁰ = 1.'},
+  {t:'num',q:'Calcola log<sub>10</sub> 1000.',ans:3,exp:'10³ = 1000.'},
+  {t:'num',q:'Calcola log<sub>2</sub> (1/4).',ans:-2,exp:'1/4 = 2⁻².'},
+  {t:'mc',q:'Le condizioni perché log<sub>a</sub>b esista sono:',opts:['a &gt; 0, a ≠ 1, b &gt; 0','b &gt; 0 soltanto','a &gt; 1 e b &gt; 1','a qualsiasi, b qualsiasi'],ans:0,exp:'Base positiva e diversa da 1, argomento strettamente positivo.'},
+  {t:'mc',q:'log<sub>a</sub>(x·y) è uguale a:',opts:['log<sub>a</sub>x + log<sub>a</sub>y','log<sub>a</sub>x · log<sub>a</sub>y','log<sub>a</sub>x − log<sub>a</sub>y','log<sub>a</sub>(x+y)'],ans:0,exp:'Il logaritmo di un prodotto è la somma dei logaritmi.'},
+  {t:'mc',q:'log<sub>a</sub>(x/y) è uguale a:',opts:['log<sub>a</sub>x − log<sub>a</sub>y','log<sub>a</sub>x + log<sub>a</sub>y','log<sub>a</sub>x / log<sub>a</sub>y','log<sub>a</sub>(x−y)'],ans:0,exp:'Il logaritmo di un quoziente è la differenza dei logaritmi.'},
+  {t:'mc',q:'log<sub>a</sub>(xⁿ) è uguale a:',opts:['n · log<sub>a</sub>x','log<sub>a</sub>x ⁿ','n + log<sub>a</sub>x','(log<sub>a</sub>x)/n'],ans:0,exp:'L\'esponente dell\'argomento esce come fattore.'},
+  {t:'num',q:'Usando le proprietà, quanto vale  log<sub>6</sub> 4 + log<sub>6</sub> 9 ?',ans:2,exp:'log<sub>6</sub>(4·9) = log<sub>6</sub> 36 = 2, perché 6² = 36.'},
+  {t:'num',q:'Quanto vale  log<sub>3</sub> 54 − log<sub>3</sub> 2 ?',ans:3,exp:'log<sub>3</sub>(54/2) = log<sub>3</sub> 27 = 3.'},
   {t:'num',q:'Per ogni base a, quanto vale a⁰ ?',ans:1,exp:'Qualsiasi base elevata a 0 dà 1.'},
   {t:'mc',q:'La funzione y = aˣ con a &gt; 1 è:',opts:['crescente','decrescente','costante','periodica'],ans:0,exp:'Con base maggiore di 1 l\'esponenziale cresce.'},
   {t:'mc',q:'La funzione y = (1/2)ˣ è:',opts:['decrescente','crescente','costante','non definita'],ans:0,exp:'Base tra 0 e 1: la funzione decresce.'},
   {t:'mc',q:'Il codominio (insieme dei valori) di y = aˣ è:',opts:['(0, +∞)','ℝ','[0, +∞)','(−∞, 0)'],ans:0,exp:'aˣ è sempre strettamente positiva.'},
-  {t:'mc',q:'La funzione y = logₐx è:',opts:['l\'inversa di aˣ','uguale ad aˣ','un polinomio','l\'inversa di xᵃ'],ans:0,exp:'Logaritmo ed esponenziale con la stessa base sono funzioni inverse.'},
-  {t:'mc',q:'Il dominio di y = logₐx è:',opts:['(0, +∞)','ℝ','(−∞, 0)','ℝ ∖ {0}'],ans:0,exp:'L\'argomento del logaritmo deve essere &gt; 0.'},
-  {t:'num',q:'Quanto vale  2^(log₂ 7) ?',ans:7,exp:'aˣ e logₐ sono inverse: a^(logₐ b) = b.'},
-  {t:'num',q:'Quanto vale  log₂ (2⁵) ?',ans:5,exp:'logₐ(aⁿ) = n.'}
+  {t:'mc',q:'La funzione y = log<sub>a</sub>x è:',opts:['l\'inversa di aˣ','uguale ad aˣ','un polinomio','l\'inversa di xᵃ'],ans:0,exp:'Logaritmo ed esponenziale con la stessa base sono funzioni inverse.'},
+  {t:'mc',q:'Il dominio di y = log<sub>a</sub>x è:',opts:['(0, +∞)','ℝ','(−∞, 0)','ℝ ∖ {0}'],ans:0,exp:'L\'argomento del logaritmo deve essere &gt; 0.'},
+  {t:'num',q:'Quanto vale  2^(log<sub>2</sub> 7) ?',ans:7,exp:'aˣ e log<sub>a</sub> sono inverse: a^(log<sub>a</sub> b) = b.'},
+  {t:'num',q:'Quanto vale  log<sub>2</sub> (2⁵) ?',ans:5,exp:'log<sub>a</sub>(aⁿ) = n.'}
 ],
 eqesp:[
   {t:'mc',q:'L\'equazione 2ˣ = 2⁵ equivale a:',opts:['x = 5','x = 2','x = 10','x = 32'],ans:0,exp:'Stessa base ⟹ esponenti uguali.'},
@@ -843,7 +843,7 @@ eqesp:[
   {t:'num',q:'Risolvi 4ˣ = 8.',ans:1.5,tol:0.01,exp:'2^(2x) = 2³ ⟹ 2x = 3 ⟹ x = 3/2 = 1.5.'},
   {t:'mc',q:'L\'equazione aˣ = b con b ≤ 0:',opts:['non ha soluzioni','ha una soluzione','ha due soluzioni','ha infinite soluzioni'],ans:0,exp:'aˣ &gt; 0 sempre, quindi non può uguagliare un numero ≤ 0.'},
   {t:'num',q:'Risolvi 2ˣ = 1.',ans:0,exp:'1 = 2⁰ ⟹ x = 0.'},
-  {t:'mc',q:'Per risolvere 4ˣ − 3·2ˣ + 2 = 0 conviene porre:',opts:['t = 2ˣ','t = 4ˣ','t = x²','t = log₂x'],ans:0,exp:'Con t = 2ˣ si ha 4ˣ = t², e l\'equazione diventa t² − 3t + 2 = 0.'},
+  {t:'mc',q:'Per risolvere 4ˣ − 3·2ˣ + 2 = 0 conviene porre:',opts:['t = 2ˣ','t = 4ˣ','t = x²','t = log<sub>2</sub>x'],ans:0,exp:'Con t = 2ˣ si ha 4ˣ = t², e l\'equazione diventa t² − 3t + 2 = 0.'},
   {t:'num',q:'4ˣ − 3·2ˣ + 2 = 0: inserisci la soluzione minore.',ans:0,exp:'t = 1, 2 ⟹ x = 0, 1. La minore è 0.'},
   {t:'num',q:'4ˣ − 3·2ˣ + 2 = 0: inserisci la soluzione maggiore.',ans:1,exp:'t = 1, 2 ⟹ x = 0, 1. La maggiore è 1.'},
   {t:'num',q:'9ˣ − 4·3ˣ + 3 = 0: inserisci la soluzione maggiore.',ans:1,exp:'t = 3ˣ ⟹ t² − 4t + 3 = 0 ⟹ t = 1, 3 ⟹ x = 0, 1.'},
@@ -852,28 +852,28 @@ eqesp:[
   {t:'num',q:'Risolvi 3^(x+1) = 3^(2x−1).',ans:2,exp:'Stessa base ⟹ x + 1 = 2x − 1 ⟹ x = 2.'},
   {t:'num',q:'Risolvi 10ˣ = 1000.',ans:3,exp:'1000 = 10³ ⟹ x = 3.'},
   {t:'num',q:'Risolvi (1/3)ˣ = 9.',ans:-2,exp:'3^(−x) = 3² ⟹ −x = 2 ⟹ x = −2.'},
-  {t:'mc',q:'L\'equazione 2ˣ = −4 ha:',opts:['nessuna soluzione','x = 2','x = −2','x = log₂4'],ans:0,exp:'Un\'esponenziale non assume mai valori negativi.'}
+  {t:'mc',q:'L\'equazione 2ˣ = −4 ha:',opts:['nessuna soluzione','x = 2','x = −2','x = log<sub>2</sub>4'],ans:0,exp:'Un\'esponenziale non assume mai valori negativi.'}
 ],
 eqlog:[
-  {t:'mc',q:'L\'equazione logₐf(x) = b (con la definizione) equivale a:',opts:['f(x) = aᵇ','f(x) = b·a','f(x) = bᵃ','f(x) = a/b'],ans:0,exp:'Per definizione di logaritmo.'},
-  {t:'num',q:'Risolvi log₂ x = 3.',ans:8,exp:'x = 2³ = 8.'},
-  {t:'num',q:'Risolvi log₃ x = 2.',ans:9,exp:'x = 3² = 9.'},
-  {t:'num',q:'Risolvi log₂(x − 1) = 3.',ans:9,exp:'x − 1 = 8 ⟹ x = 9.'},
-  {t:'num',q:'Risolvi log₅(2x) = 1.',ans:2.5,tol:0.01,exp:'2x = 5¹ = 5 ⟹ x = 2.5.'},
+  {t:'mc',q:'L\'equazione log<sub>a</sub>f(x) = b (con la definizione) equivale a:',opts:['f(x) = aᵇ','f(x) = b·a','f(x) = bᵃ','f(x) = a/b'],ans:0,exp:'Per definizione di logaritmo.'},
+  {t:'num',q:'Risolvi log<sub>2</sub> x = 3.',ans:8,exp:'x = 2³ = 8.'},
+  {t:'num',q:'Risolvi log<sub>3</sub> x = 2.',ans:9,exp:'x = 3² = 9.'},
+  {t:'num',q:'Risolvi log<sub>2</sub>(x − 1) = 3.',ans:9,exp:'x − 1 = 8 ⟹ x = 9.'},
+  {t:'num',q:'Risolvi log<sub>5</sub>(2x) = 1.',ans:2.5,tol:0.01,exp:'2x = 5¹ = 5 ⟹ x = 2.5.'},
   {t:'num',q:'Risolvi log x = 2  (base 10).',ans:100,exp:'x = 10² = 100.'},
-  {t:'mc',q:'logₐf(x) = logₐg(x) equivale a f(x) = g(x), a patto che:',opts:['f(x) &gt; 0 e g(x) &gt; 0','f(x) = g(x) sempre','a &gt; 1','f(x) &lt; 0'],ans:0,exp:'Servono le condizioni di esistenza: entrambi gli argomenti positivi.'},
+  {t:'mc',q:'log<sub>a</sub>f(x) = log<sub>a</sub>g(x) equivale a f(x) = g(x), a patto che:',opts:['f(x) &gt; 0 e g(x) &gt; 0','f(x) = g(x) sempre','a &gt; 1','f(x) &lt; 0'],ans:0,exp:'Servono le condizioni di esistenza: entrambi gli argomenti positivi.'},
   {t:'num',q:'Risolvi log(x + 1) = log(2x − 3)  (base 10).',ans:4,exp:'x + 1 = 2x − 3 ⟹ x = 4; argomenti positivi: ok.'},
-  {t:'num',q:'Risolvi log₂(3x) = log₂(x + 4).',ans:2,exp:'3x = x + 4 ⟹ x = 2; argomenti positivi: ok.'},
+  {t:'num',q:'Risolvi log<sub>2</sub>(3x) = log<sub>2</sub>(x + 4).',ans:2,exp:'3x = x + 4 ⟹ x = 2; argomenti positivi: ok.'},
   {t:'mc',q:'Perché in un\'equazione logaritmica si controllano le C.E.?',opts:['per scartare soluzioni con argomento ≤ 0','per trovare più soluzioni','per cambiare base','non servono'],ans:0,exp:'Una soluzione algebrica che rende un argomento ≤ 0 va scartata.'},
-  {t:'num',q:'Risolvi log₂ x + log₂(x − 2) = 3.',ans:4,exp:'x(x−2)=8 ⟹ x²−2x−8=0 ⟹ x=4 (x=−2 scartata).'},
+  {t:'num',q:'Risolvi log<sub>2</sub> x + log<sub>2</sub>(x − 2) = 3.',ans:4,exp:'x(x−2)=8 ⟹ x²−2x−8=0 ⟹ x=4 (x=−2 scartata).'},
   {t:'num',q:'Risolvi ln x = 0.',ans:1,exp:'x = e⁰ = 1.'},
-  {t:'num',q:'Risolvi log₂(x + 3) = 4.',ans:13,exp:'x + 3 = 2⁴ = 16 ⟹ x = 13.'},
-  {t:'num',q:'Risolvi 2·log₂ x = 6.',ans:8,exp:'log₂ x = 3 ⟹ x = 2³ = 8.'},
+  {t:'num',q:'Risolvi log<sub>2</sub>(x + 3) = 4.',ans:13,exp:'x + 3 = 2⁴ = 16 ⟹ x = 13.'},
+  {t:'num',q:'Risolvi 2·log<sub>2</sub> x = 6.',ans:8,exp:'log<sub>2</sub> x = 3 ⟹ x = 2³ = 8.'},
   {t:'num',q:'Risolvi log(x) = log(3)  (base 10).',ans:3,exp:'Stessa base ⟹ x = 3.'},
-  {t:'num',q:'Risolvi log₄ x = 0.5.',ans:2,exp:'x = 4^(1/2) = 2.'},
-  {t:'num',q:'Risolvi log₂(x − 1) = log₂ 5.',ans:6,exp:'x − 1 = 5 ⟹ x = 6.'},
-  {t:'num',q:'Risolvi log₂ x = −1.',ans:0.5,tol:0.01,exp:'x = 2⁻¹ = 1/2 = 0.5.'},
-  {t:'num',q:'Risolvi log₅ x = 2.',ans:25,exp:'x = 5² = 25.'},
+  {t:'num',q:'Risolvi log<sub>4</sub> x = 0.5.',ans:2,exp:'x = 4^(1/2) = 2.'},
+  {t:'num',q:'Risolvi log<sub>2</sub>(x − 1) = log<sub>2</sub> 5.',ans:6,exp:'x − 1 = 5 ⟹ x = 6.'},
+  {t:'num',q:'Risolvi log<sub>2</sub> x = −1.',ans:0.5,tol:0.01,exp:'x = 2⁻¹ = 1/2 = 0.5.'},
+  {t:'num',q:'Risolvi log<sub>5</sub> x = 2.',ans:25,exp:'x = 5² = 25.'},
   {t:'num',q:'log(x) + log(x − 3) = 1 (base 10): inserisci la soluzione accettabile.',ans:5,exp:'x(x−3)=10 ⟹ x²−3x−10=0 ⟹ x=5 ∨ x=−2; accettabile x=5.'}
 ],
 disesp:[
@@ -900,25 +900,25 @@ disesp:[
 ],
 dislog:[
   {t:'mc',q:'Prima di risolvere una disequazione logaritmica si impongono le C.E., cioè:',opts:['ogni argomento &gt; 0','ogni argomento ≠ 0','la base &gt; 1','x &gt; 1'],ans:0,exp:'Gli argomenti dei logaritmi devono essere strettamente positivi.'},
-  {t:'mc',q:'Con a &gt; 1, da logₐf &gt; logₐg (con f, g &gt; 0) segue:',opts:['f &gt; g','f &lt; g','f = g','f &gt; 0'],ans:0,exp:'Base &gt; 1: logaritmo crescente, verso invariato.'},
-  {t:'mc',q:'Con 0 &lt; a &lt; 1, da logₐf &gt; logₐg segue:',opts:['f &lt; g','f &gt; g','f = g','nessuna soluzione'],ans:0,exp:'Base &lt; 1: logaritmo decrescente, verso invertito.'},
-  {t:'num',q:'log₂ x &gt; 3 ⟺ x &gt; k. Quanto vale k?',ans:8,exp:'3 = log₂ 8; base &gt; 1 ⟹ x &gt; 8 (con x &gt; 0).'},
-  {t:'num',q:'log₂ x &lt; 4 ⟺ 0 &lt; x &lt; k. Quanto vale k?',ans:16,exp:'4 = log₂ 16; base &gt; 1 ⟹ x &lt; 16; con C.E. 0 &lt; x &lt; 16.'},
-  {t:'num',q:'log₃ x ≥ 2 ⟺ x ≥ k. Quanto vale k?',ans:9,exp:'2 = log₃ 9; base &gt; 1 ⟹ x ≥ 9.'},
-  {t:'mc',q:'log_(1/2) x &gt; 1 equivale a:',opts:['0 &lt; x &lt; 1/2','x &gt; 1/2','x &gt; 2','0 &lt; x &lt; 2'],ans:0,exp:'1 = log_(1/2)(1/2); base &lt; 1 inverte: x &lt; 1/2, con x &gt; 0.'},
-  {t:'num',q:'log₂(x − 1) &gt; 3 ⟺ x &gt; k. Quanto vale k?',ans:9,exp:'3 = log₂ 8 ⟹ x − 1 &gt; 8 ⟹ x &gt; 9.'},
+  {t:'mc',q:'Con a &gt; 1, da log<sub>a</sub>f &gt; log<sub>a</sub>g (con f, g &gt; 0) segue:',opts:['f &gt; g','f &lt; g','f = g','f &gt; 0'],ans:0,exp:'Base &gt; 1: logaritmo crescente, verso invariato.'},
+  {t:'mc',q:'Con 0 &lt; a &lt; 1, da log<sub>a</sub>f &gt; log<sub>a</sub>g segue:',opts:['f &lt; g','f &gt; g','f = g','nessuna soluzione'],ans:0,exp:'Base &lt; 1: logaritmo decrescente, verso invertito.'},
+  {t:'num',q:'log<sub>2</sub> x &gt; 3 ⟺ x &gt; k. Quanto vale k?',ans:8,exp:'3 = log<sub>2</sub> 8; base &gt; 1 ⟹ x &gt; 8 (con x &gt; 0).'},
+  {t:'num',q:'log<sub>2</sub> x &lt; 4 ⟺ 0 &lt; x &lt; k. Quanto vale k?',ans:16,exp:'4 = log<sub>2</sub> 16; base &gt; 1 ⟹ x &lt; 16; con C.E. 0 &lt; x &lt; 16.'},
+  {t:'num',q:'log<sub>3</sub> x ≥ 2 ⟺ x ≥ k. Quanto vale k?',ans:9,exp:'2 = log<sub>3</sub> 9; base &gt; 1 ⟹ x ≥ 9.'},
+  {t:'mc',q:'log<sub>1/2</sub> x &gt; 1 equivale a:',opts:['0 &lt; x &lt; 1/2','x &gt; 1/2','x &gt; 2','0 &lt; x &lt; 2'],ans:0,exp:'1 = log<sub>1/2</sub>(1/2); base &lt; 1 inverte: x &lt; 1/2, con x &gt; 0.'},
+  {t:'num',q:'log<sub>2</sub>(x − 1) &gt; 3 ⟺ x &gt; k. Quanto vale k?',ans:9,exp:'3 = log<sub>2</sub> 8 ⟹ x − 1 &gt; 8 ⟹ x &gt; 9.'},
   {t:'num',q:'log x &gt; 2 (base 10) ⟺ x &gt; k. Quanto vale k?',ans:100,exp:'2 = log 100; base &gt; 1 ⟹ x &gt; 100.'},
-  {t:'mc',q:'Il dominio di log₂(x − 3) richiede:',opts:['x &gt; 3','x &gt; 0','x ≠ 3','x &lt; 3'],ans:0,exp:'L\'argomento x − 3 deve essere &gt; 0.'},
-  {t:'num',q:'log₂ x ≤ 0 ⟺ 0 &lt; x ≤ k. Quanto vale k?',ans:1,exp:'0 = log₂ 1; base &gt; 1 ⟹ x ≤ 1; con C.E. 0 &lt; x ≤ 1.'},
-  {t:'num',q:'log₃ x &gt; 0 ⟺ x &gt; k. Quanto vale k?',ans:1,exp:'0 = log₃ 1 ⟹ x &gt; 1.'},
-  {t:'mc',q:'log₂ x &lt; 0 equivale a:',opts:['0 &lt; x &lt; 1','x &gt; 1','x &lt; 1','x &gt; 0'],ans:0,exp:'0 = log₂ 1; base &gt; 1 ⟹ x &lt; 1; con C.E. 0 &lt; x &lt; 1.'},
-  {t:'num',q:'log_(1/2) x &lt; 2 ⟺ x &gt; k. Quanto vale k?',ans:0.25,tol:0.01,exp:'2 = log_(1/2)(1/4); base &lt; 1 inverte: x &gt; 1/4 = 0.25.'},
-  {t:'num',q:'log₂(2x) &gt; 3 ⟺ x &gt; k. Quanto vale k?',ans:4,exp:'3 = log₂ 8 ⟹ 2x &gt; 8 ⟹ x &gt; 4.'},
-  {t:'num',q:'log₅ x ≥ 1 ⟺ x ≥ k. Quanto vale k?',ans:5,exp:'1 = log₅ 5 ⟹ x ≥ 5.'},
-  {t:'num',q:'log₃(x + 1) ≤ 2 ⟺ −1 &lt; x ≤ k. Quanto vale k?',ans:8,exp:'2 = log₃ 9 ⟹ x + 1 ≤ 9 ⟹ x ≤ 8; con C.E. x &gt; −1.'},
+  {t:'mc',q:'Il dominio di log<sub>2</sub>(x − 3) richiede:',opts:['x &gt; 3','x &gt; 0','x ≠ 3','x &lt; 3'],ans:0,exp:'L\'argomento x − 3 deve essere &gt; 0.'},
+  {t:'num',q:'log<sub>2</sub> x ≤ 0 ⟺ 0 &lt; x ≤ k. Quanto vale k?',ans:1,exp:'0 = log<sub>2</sub> 1; base &gt; 1 ⟹ x ≤ 1; con C.E. 0 &lt; x ≤ 1.'},
+  {t:'num',q:'log<sub>3</sub> x &gt; 0 ⟺ x &gt; k. Quanto vale k?',ans:1,exp:'0 = log<sub>3</sub> 1 ⟹ x &gt; 1.'},
+  {t:'mc',q:'log<sub>2</sub> x &lt; 0 equivale a:',opts:['0 &lt; x &lt; 1','x &gt; 1','x &lt; 1','x &gt; 0'],ans:0,exp:'0 = log<sub>2</sub> 1; base &gt; 1 ⟹ x &lt; 1; con C.E. 0 &lt; x &lt; 1.'},
+  {t:'num',q:'log<sub>1/2</sub> x &lt; 2 ⟺ x &gt; k. Quanto vale k?',ans:0.25,tol:0.01,exp:'2 = log<sub>1/2</sub>(1/4); base &lt; 1 inverte: x &gt; 1/4 = 0.25.'},
+  {t:'num',q:'log<sub>2</sub>(2x) &gt; 3 ⟺ x &gt; k. Quanto vale k?',ans:4,exp:'3 = log<sub>2</sub> 8 ⟹ 2x &gt; 8 ⟹ x &gt; 4.'},
+  {t:'num',q:'log<sub>5</sub> x ≥ 1 ⟺ x ≥ k. Quanto vale k?',ans:5,exp:'1 = log<sub>5</sub> 5 ⟹ x ≥ 5.'},
+  {t:'num',q:'log<sub>3</sub>(x + 1) ≤ 2 ⟺ −1 &lt; x ≤ k. Quanto vale k?',ans:8,exp:'2 = log<sub>3</sub> 9 ⟹ x + 1 ≤ 9 ⟹ x ≤ 8; con C.E. x &gt; −1.'},
   {t:'mc',q:'Perché alcune soluzioni di una disequazione logaritmica si scartano?',opts:['non rispettano le C.E. (argomento ≤ 0)','sono troppo grandi','la base è negativa','non si scartano mai'],ans:0,exp:'Vanno tenute solo le x che rendono positivi tutti gli argomenti.'},
   {t:'num',q:'log x &lt; 3 (base 10) ⟺ 0 &lt; x &lt; k. Quanto vale k?',ans:1000,exp:'3 = log 1000; base &gt; 1 ⟹ x &lt; 1000; con C.E. 0 &lt; x &lt; 1000.'},
-  {t:'num',q:'log₄ x = 1 è il confine di log₄ x &gt; 1 ⟺ x &gt; k. Quanto vale k?',ans:4,exp:'1 = log₄ 4 ⟹ x &gt; 4.'}
+  {t:'num',q:'log<sub>4</sub> x = 1 è il confine di log<sub>4</sub> x &gt; 1 ⟺ x &gt; k. Quanto vale k?',ans:4,exp:'1 = log<sub>4</sub> 4 ⟹ x &gt; 4.'}
 ]
 };
 

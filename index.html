@@ -408,7 +408,7 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
         <div class="ctrl"><label>base a</label><input type="range" id="de-a" min="0.2" max="5" step="0.05" value="2" oninput="smDisesp()"><span class="v" id="de-a-val">2.00</span></div>
         <div class="ctrl"><label>valore b</label><input type="range" id="de-b" min="0.25" max="16" step="0.25" value="4" oninput="smDisesp()"><span class="v" id="de-b-val">4.00</span></div>
         <div class="ctrl"><label>relazione</label>
-          <select id="de-dir" onchange="smDisesp()"><option value="gt">a<sup>x</sup> &gt; b</option><option value="lt">a<sup>x</sup> &lt; b</option></select></div>
+          <select id="de-dir" onchange="smDisesp()"><option value="gt">aˣ &gt; b</option><option value="lt">aˣ &lt; b</option></select></div>
         <div><button class="btn" id="de-anim" onclick="toggleAnim(this,{slider:'de-a',from:0.25,to:4,step:0.03,update:smDisesp})">▶ Anima la base</button></div>
       </div>
       <div class="sim-fb" id="de-fb"></div>
@@ -455,7 +455,7 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
         <div class="ctrl"><label>base a</label><input type="range" id="dl-a" min="0.2" max="5" step="0.05" value="2" oninput="smDislog()"><span class="v" id="dl-a-val">2.00</span></div>
         <div class="ctrl"><label>valore b</label><input type="range" id="dl-b" min="-3" max="3" step="0.25" value="2" oninput="smDislog()"><span class="v" id="dl-b-val">2.00</span></div>
         <div class="ctrl"><label>relazione</label>
-          <select id="dl-dir" onchange="smDislog()"><option value="gt">log<sub>a</sub>x &gt; b</option><option value="lt">log<sub>a</sub>x &lt; b</option></select></div>
+          <select id="dl-dir" onchange="smDislog()"><option value="gt">logₐx &gt; b</option><option value="lt">logₐx &lt; b</option></select></div>
         <div><button class="btn" id="dl-anim" onclick="toggleAnim(this,{slider:'dl-a',from:0.25,to:4,step:0.03,update:smDislog})">▶ Anima la base</button></div>
       </div>
       <div class="sim-fb" id="dl-fb"></div>

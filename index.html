@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#4527a0">
 <title>Esponenziali e logaritmi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
 <script>/* tema: applica subito per evitare flash */(function(){try{var t=localStorage.getItem('theme');if(!t)t=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <style>
 :root{
@@ -16,7 +19,7 @@
   --text:#e8e4f4;--muted:#9e97b8;--border:#3a3354;--shadow:0 2px 6px rgba(0,0,0,.35);
 }
 [data-theme="dark"] .formula{background:#252040}
-[data-theme="dark"] .tip{background:#162018;border-color:#4caf50;color:#a5d6a7}
+[data-theme="dark"] .tip{background:#241d3a;border-color:#9575cd;color:#d1c4e9}
 [data-theme="dark"] .warn{background:#28210a;border-color:#fbc02d;color:#ffe082}
 [data-theme="dark"] .ex{background:#2a1f0e;color:#ffcc80}
 [data-theme="dark"] .pv-hint{background:#28210a;border-color:#fbc02d;color:#ffe082}
@@ -34,8 +37,8 @@
 [data-theme="dark"] .quiz-review.alt{background:#252040;color:#b39ddb}
 [data-theme="dark"] .quiz-review.alt:hover{background:#2e2a50}
 [data-theme="dark"] .rv-item{background:#1e1a2e}
-[data-theme="dark"] .quiz-exp.ok,[data-theme="dark"] .pv-fb.ok{background:#162018;border-color:#388e3c;color:#a5d6a7}
-[data-theme="dark"] .quiz-exp.no,[data-theme="dark"] .pv-fb.no{background:#2a1414;border-color:#c62828;color:#ef9a9a}
+[data-theme="dark"] .quiz-exp.ok,[data-theme="dark"] .pv-fb.ok{background:#241d3a;border-color:#9575cd;color:#d1c4e9}
+[data-theme="dark"] .quiz-exp.no,[data-theme="dark"] .pv-fb.no{background:#2e2410;border-color:#ffb74d;color:#ffcc80}
 [data-theme="dark"] .sim-fb{background:#252040;border-color:var(--primary)}
 [data-theme="dark"] .diagram canvas{background:#1e1a2e}
 *{box-sizing:border-box}
@@ -43,11 +46,11 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
   font-size:clamp(15px,2.4vw,17px);line-height:1.55}
 header{background:linear-gradient(135deg,var(--primary),var(--primary-d));color:#fff;
-  padding:.85rem 1rem;box-shadow:var(--shadow);position:sticky;top:0;z-index:10}
-header h1{margin:0;font-size:clamp(1.15rem,4.5vw,1.55rem)}
+  padding:.85rem 1rem;box-shadow:var(--shadow);position:static;z-index:10}
+header h1{margin:0;font-family:"Fraunces",Georgia,serif;font-size:clamp(1.15rem,4.5vw,1.55rem)}
 header .sub{font-size:.85em;opacity:.85}
 nav.main{background:var(--surface);display:flex;overflow-x:auto;
-  border-bottom:1px solid var(--border);position:sticky;z-index:5;scrollbar-width:thin}
+  border-bottom:1px solid var(--border);position:static;z-index:5;scrollbar-width:thin}
 nav.main button{flex:0 0 auto;background:none;border:0;padding:.85rem 1rem;
   font-size:.95em;color:var(--muted);border-bottom:3px solid transparent;
   cursor:pointer;white-space:nowrap;min-height:44px;font-family:inherit}
@@ -57,14 +60,14 @@ section.scene{display:none}
 section.scene.active{display:block}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;
   padding:1rem;margin-bottom:1rem;box-shadow:var(--shadow)}
-.card h2{margin-top:0;color:var(--primary-d);font-size:1.15em}
+.card h2{margin-top:0;font-family:"Fraunces",Georgia,serif;color:var(--primary-d);font-size:1.15em}
 .card h3{margin:.85rem 0 .35rem;color:var(--primary-d);font-size:1em}
 .card h4{margin:.7rem 0 .25rem;color:var(--primary-d);font-size:.95em}
 .formula{background:#efeafd;border-left:3px solid var(--primary);
   padding:.55rem .8rem;margin:.4rem 0;border-radius:4px;
   font-family:"Cambria Math","STIX Two Math",Georgia,serif;font-size:1.05em;
   overflow-x:auto;white-space:nowrap}
-.tip{background:#e8f5e9;border-left:3px solid #2e7d32;padding:.5rem .8rem;
+.tip{background:#efeafd;border-left:3px solid #5e35b1;padding:.5rem .8rem;
   margin:.5rem 0;border-radius:4px;font-size:.93em}
 .warn{background:#fff8e1;border-left:3px solid #f9a825;padding:.5rem .8rem;
   margin:.5rem 0;border-radius:4px;font-size:.93em}
@@ -130,8 +133,8 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
 .pv-btn.ghost{background:#efeafd;color:var(--primary-d);border:1.5px solid var(--primary)}
 .pv-btn.ghost:hover{background:#e2d9f7}
 .pv-fb{padding:.5rem .8rem;border-radius:8px;font-size:.9em;margin-top:.7rem}
-.pv-fb.ok{background:#e8f5e9;border-left:3px solid #388e3c;color:#1b5e20}
-.pv-fb.no{background:#ffebee;border-left:3px solid #c62828;color:#b71c1c}
+.pv-fb.ok{background:#ede7f6;border-left:3px solid #5e35b1;color:#4527a0}
+.pv-fb.no{background:#fff3e0;border-left:3px solid #ef6c00;color:#b35400}
 .pv-hint{background:#fff8e1;border-left:3px solid #f9a825;padding:.5rem .8rem;border-radius:4px;margin-top:.6rem;font-size:.9em}
 .pv-sol{background:#f6f3fc;border:1px solid var(--border);border-radius:8px;padding:.6rem .8rem;margin-top:.6rem;font-size:.9em}
 .pv-sol ol{margin:.2rem 0 .2rem 1.1rem}
@@ -151,8 +154,8 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
   font-family:inherit;color:var(--text);line-height:1.35;transition:background .12s,border-color .12s}
 .quiz-btn:not(:disabled):hover{background:#e7e0f6;border-color:var(--primary)}
 .quiz-btn:disabled{cursor:default}
-.quiz-btn.correct{background:#c8e6c9!important;border-color:#388e3c!important;color:#1b5e20;font-weight:600}
-.quiz-btn.wrong{background:#ffcdd2!important;border-color:#c62828!important;color:#b71c1c}
+.quiz-btn.correct{background:#ede7f6!important;border-color:#5e35b1!important;color:#4527a0;font-weight:600}
+.quiz-btn.wrong{background:#fff3e0!important;border-color:#ef6c00!important;color:#b35400}
 .quiz-numrow{display:flex;gap:.45rem;flex-wrap:wrap;align-items:center;margin-bottom:.5rem}
 .quiz-num{font-family:"Cambria Math",Georgia,serif;font-size:1em;padding:.45rem .6rem;
   border:1.5px solid var(--border);border-radius:8px;width:160px;max-width:50vw}
@@ -160,8 +163,8 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
 .quiz-check{background:var(--primary);color:#fff;border:0;border-radius:8px;padding:.45rem .9rem;font-size:.86em;cursor:pointer;font-family:inherit}
 .quiz-check:hover{background:var(--primary-d)}
 .quiz-exp{padding:.55rem .85rem;border-radius:8px;font-size:.86em;line-height:1.5;margin:.45rem 0}
-.quiz-exp.ok{background:#e8f5e9;border-left:3px solid #388e3c;color:#1b5e20}
-.quiz-exp.no{background:#ffebee;border-left:3px solid #c62828;color:#b71c1c}
+.quiz-exp.ok{background:#ede7f6;border-left:3px solid #5e35b1;color:#4527a0}
+.quiz-exp.no{background:#fff3e0;border-left:3px solid #ef6c00;color:#b35400}
 .quiz-next{background:var(--primary);color:#fff;border:0;border-radius:8px;
   padding:.48rem 1.1rem;font-size:.88em;cursor:pointer;font-family:inherit;margin-top:.25rem}
 .quiz-next:hover{background:var(--primary-d)}
@@ -175,30 +178,36 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
 .quiz-review.alt{background:#efeafd;color:var(--primary-d);border:1.5px solid var(--primary)}
 .quiz-review.alt:hover{background:#e2d9f7}
 .rv-item{border:1px solid var(--border);border-radius:8px;padding:.6rem .8rem;margin:.5rem 0;background:#faf8fd}
-.rv-item.ok{border-left:4px solid #388e3c}
-.rv-item.no{border-left:4px solid #c62828}
+.rv-item.ok{border-left:4px solid #5e35b1}
+.rv-item.no{border-left:4px solid #ef6c00}
 .rv-q{font-weight:600;font-size:.93em;margin-bottom:.3rem}
 .rv-line{font-size:.85em;margin:.1rem 0;color:var(--muted)}
-.rv-line b.ok{color:#1b5e20}
-.rv-line b.no{color:#b71c1c}
+.rv-line b.ok{color:#4527a0}
+.rv-line b.no{color:#b35400}
 .rv-exp{font-size:.83em;color:var(--text);margin-top:.3rem;font-style:italic}
+[data-theme="dark"] .rv-item.ok{border-left-color:#9575cd}
+[data-theme="dark"] .rv-item.no{border-left-color:#ffb74d}
+[data-theme="dark"] .rv-line b.ok{color:#d1c4e9}
+[data-theme="dark"] .rv-line b.no{color:#ffcc80}
+#theme-btn svg{width:18px;height:18px;display:block}
+.ex-fb svg,#theme-btn svg{vertical-align:middle}
 </style>
 </head>
 <body>
 <header style="display:flex;align-items:center;gap:.7rem">
   <div style="flex:1;min-width:0">
-    <h1>🔢 Esponenziali e logaritmi</h1>
+    <h1>Esponenziali e logaritmi</h1>
     <div class="sub">Teoria · simulazioni · esercizi · quiz</div>
   </div>
-  <button id="theme-btn" onclick="toggleTheme()" aria-label="Cambia tema" style="background:none;border:1.5px solid rgba(255,255,255,.45);border-radius:8px;color:#fff;cursor:pointer;font-size:1.1em;padding:.25rem .55rem;flex-shrink:0;line-height:1.3">🌙</button>
+  <button id="theme-btn" onclick="toggleTheme()" aria-label="Cambia tema" style="background:none;border:1.5px solid rgba(255,255,255,.45);border-radius:8px;color:#fff;cursor:pointer;font-size:1.1em;padding:.25rem .55rem;flex-shrink:0;line-height:1.3"></button>
 </header>
-<nav class="main" id="mainNav">
-  <button data-tab="home" class="active">🏠 Home</button>
-  <button data-tab="basi">📚 Basi</button>
-  <button data-tab="eqesp">⚡ Eq. esponenziali</button>
-  <button data-tab="eqlog">🔑 Eq. logaritmiche</button>
-  <button data-tab="disesp">⚖️ Diseq. esponenziali</button>
-  <button data-tab="dislog">📐 Diseq. logaritmiche</button>
+<nav class="main" id="mainNav" role="tablist">
+  <button data-tab="home" class="active" role="tab" aria-selected="true">Home</button>
+  <button data-tab="basi" role="tab" aria-selected="false">Basi</button>
+  <button data-tab="eqesp" role="tab" aria-selected="false">Eq. esponenziali</button>
+  <button data-tab="eqlog" role="tab" aria-selected="false">Eq. logaritmiche</button>
+  <button data-tab="disesp" role="tab" aria-selected="false">Diseq. esponenziali</button>
+  <button data-tab="dislog" role="tab" aria-selected="false">Diseq. logaritmiche</button>
 </nav>
 <main>
 
@@ -209,44 +218,44 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
     <p>L'<strong>esponenziale</strong> <em>a<sup>x</sup></em> e il <strong>logaritmo</strong> <em>log<sub>a</sub>x</em> sono due funzioni inverse: capire l'una aiuta a padroneggiare l'altra. In questa app trovi una sezione di richiami e quattro sezioni dedicate alla risoluzione di <strong>equazioni</strong> e <strong>disequazioni</strong>.</p>
     <p>Ogni sezione è organizzata sempre nello stesso modo, in quattro parti:</p>
     <ul>
-      <li>📖 <strong>Teoria</strong> — concetti, formule e diagrammi;</li>
-      <li>🎛️ <strong>Simulazioni</strong> — grafici con parametri regolabili e animazioni;</li>
-      <li>✍️ <strong>Prova tu</strong> — esercizi guidati con suggerimenti e soluzione passo-passo;</li>
-      <li>🧩 <strong>Quiz</strong> — domande a scelta multipla e calcoli numerici con validazione.</li>
+      <li><strong>Teoria</strong> — concetti, formule e diagrammi;</li>
+      <li><strong>Simulazioni</strong> — grafici con parametri regolabili e animazioni;</li>
+      <li><strong>Prova tu</strong> — esercizi guidati con suggerimenti e soluzione passo-passo;</li>
+      <li><strong>Quiz</strong> — domande a scelta multipla e calcoli numerici con validazione.</li>
     </ul>
-    <div class="tip">💡 Consiglio: parti dalle <strong>Basi</strong>, gioca con le <strong>Simulazioni</strong> per costruire l'intuizione, poi allenati con <strong>Prova tu</strong> e verifica con il <strong>Quiz</strong>.</div>
+    <div class="tip">Consiglio: parti dalle <strong>Basi</strong>, gioca con le <strong>Simulazioni</strong> per costruire l'intuizione, poi allenati con <strong>Prova tu</strong> e verifica con il <strong>Quiz</strong>.</div>
   </div>
   <div class="home-grid">
-    <button class="home-card" data-go="basi"><span class="ico">📚</span><strong>Basi</strong><span>Potenze, definizione e proprietà dei logaritmi, grafici</span></button>
-    <button class="home-card" data-go="eqesp"><span class="ico">⚡</span><strong>Equazioni esponenziali</strong><span>Monomie (stessa base) e polinomie (sostituzione)</span></button>
-    <button class="home-card" data-go="eqlog"><span class="ico">🔑</span><strong>Equazioni logaritmiche</strong><span>Con la definizione e per uguaglianza degli argomenti</span></button>
-    <button class="home-card" data-go="disesp"><span class="ico">⚖️</span><strong>Disequazioni esponenziali</strong><span>Il verso dipende dalla base</span></button>
-    <button class="home-card" data-go="dislog"><span class="ico">📐</span><strong>Disequazioni logaritmiche</strong><span>Condizioni di esistenza e verso</span></button>
+    <button class="home-card" data-go="basi"><span class="ico"></span><strong>Basi</strong><span>Potenze, definizione e proprietà dei logaritmi, grafici</span></button>
+    <button class="home-card" data-go="eqesp"><span class="ico"></span><strong>Equazioni esponenziali</strong><span>Monomie (stessa base) e polinomie (sostituzione)</span></button>
+    <button class="home-card" data-go="eqlog"><span class="ico"></span><strong>Equazioni logaritmiche</strong><span>Con la definizione e per uguaglianza degli argomenti</span></button>
+    <button class="home-card" data-go="disesp"><span class="ico"></span><strong>Disequazioni esponenziali</strong><span>Il verso dipende dalla base</span></button>
+    <button class="home-card" data-go="dislog"><span class="ico"></span><strong>Disequazioni logaritmiche</strong><span>Condizioni di esistenza e verso</span></button>
   </div>
   <div class="card">
-    <h2>🔗 Approfondisci con un'altra app</h2>
+    <h2>Approfondisci con un'altra app</h2>
     <p>Esponenziali e logaritmi sono anche <strong>tipi di funzione</strong>: per lo studio di funzione completo (dominio, simmetrie, segno, limiti, derivate) con teoria e quiz, apri la web app dedicata:</p>
-    <a class="applink" href="https://ventilii-gif.github.io/studio-funzioni/" target="_blank" rel="noopener">📈 Studio di funzioni →</a>
+    <a class="applink" href="https://ventilii-gif.github.io/studio-funzioni/" target="_blank" rel="noopener">Studio di funzioni →</a>
   </div>
 </section>
 
 <!-- =================== BASI =================== -->
 <section class="scene" id="basi">
-  <div class="subnav">
-    <button class="subtab active" data-sub="teoria">📖 Teoria</button>
-    <button class="subtab" data-sub="sim">🎛️ Simulazioni</button>
-    <button class="subtab" data-sub="prova">✍️ Prova tu</button>
-    <button class="subtab" data-sub="quiz">🧩 Quiz</button>
+  <div class="subnav" role="tablist">
+    <button class="subtab active" role="tab" aria-selected="true" data-sub="teoria">Teoria</button>
+    <button class="subtab" role="tab" aria-selected="false" data-sub="sim">Simulazioni</button>
+    <button class="subtab" role="tab" aria-selected="false" data-sub="prova">Prova tu</button>
+    <button class="subtab" role="tab" aria-selected="false" data-sub="quiz">Quiz</button>
   </div>
 
   <div class="subpanel active" data-sub="teoria">
     <div class="card">
-      <h2>📚 Richiami su potenze e logaritmi</h2>
+      <h2>Richiami su potenze e logaritmi</h2>
       <h3>Proprietà delle potenze</h3>
       <p>Con base <em>a &gt; 0</em> valgono le regole:</p>
       <div class="formula">a<sup>m</sup> · a<sup>n</sup> = a<sup>m+n</sup> ; a<sup>m</sup> / a<sup>n</sup> = a<sup>m−n</sup> ; (a<sup>m</sup>)<sup>n</sup> = a<sup>mn</sup></div>
       <div class="formula">a<sup>0</sup> = 1 ; a<sup>−n</sup> = 1 / a<sup>n</sup> ; a<sup>1/n</sup> = <sup>n</sup>√a</div>
-      <div class="tip">📌 Saper riscrivere un numero come potenza (es. 8 = 2<sup>3</sup>, 1/9 = 3<sup>−2</sup>) è la chiave per risolvere equazioni e disequazioni esponenziali.</div>
+      <div class="tip">Saper riscrivere un numero come potenza (es. 8 = 2<sup>3</sup>, 1/9 = 3<sup>−2</sup>) è la chiave per risolvere equazioni e disequazioni esponenziali.</div>
 
       <h3>La funzione esponenziale</h3>
       <div class="formula">f(x) = a<sup>x</sup> ,  con a &gt; 0 e a ≠ 1</div>
@@ -278,13 +287,13 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
         <li>asintoto verticale x = 0.</li>
       </ul>
       <div class="diagram"><canvas id="cv-basi-th2"></canvas><p class="cap">y = a<sup>x</sup> e y = log<sub>a</sub>x sono simmetriche rispetto alla retta y = x (funzioni inverse).</p></div>
-      <div class="warn">⚠️ Si scrive <em>ln x</em> per il logaritmo naturale (base e ≈ 2,718) e <em>log x</em> per la base 10.</div>
+      <div class="warn">Si scrive <em>ln x</em> per il logaritmo naturale (base e ≈ 2,718) e <em>log x</em> per la base 10.</div>
     </div>
   </div>
 
   <div class="subpanel" data-sub="sim">
     <div class="card">
-      <h2>🎛️ Esplora a<sup>x</sup> e log<sub>a</sub>x</h2>
+      <h2>Esplora a<sup>x</sup> e log<sub>a</sub>x</h2>
       <p>Muovi la base <em>a</em> e osserva come cambia la curva. Attiva l'inversa per vedere la simmetria rispetto a y = x.</p>
       <div class="diagram"><canvas id="cv-basi-sim"></canvas></div>
       <div class="sim-controls">
@@ -304,16 +313,16 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
 
 <!-- =================== EQUAZIONI ESPONENZIALI =================== -->
 <section class="scene" id="eqesp">
-  <div class="subnav">
-    <button class="subtab active" data-sub="teoria">📖 Teoria</button>
-    <button class="subtab" data-sub="sim">🎛️ Simulazioni</button>
-    <button class="subtab" data-sub="prova">✍️ Prova tu</button>
-    <button class="subtab" data-sub="quiz">🧩 Quiz</button>
+  <div class="subnav" role="tablist">
+    <button class="subtab active" role="tab" aria-selected="true" data-sub="teoria">Teoria</button>
+    <button class="subtab" role="tab" aria-selected="false" data-sub="sim">Simulazioni</button>
+    <button class="subtab" role="tab" aria-selected="false" data-sub="prova">Prova tu</button>
+    <button class="subtab" role="tab" aria-selected="false" data-sub="quiz">Quiz</button>
   </div>
 
   <div class="subpanel active" data-sub="teoria">
     <div class="card">
-      <h2>⚡ Equazioni esponenziali</h2>
+      <h2>Equazioni esponenziali</h2>
       <p>Un'equazione è <strong>esponenziale</strong> quando l'incognita compare in un esponente. L'idea-guida è una sola: l'esponenziale è <strong>iniettiva</strong>, quindi a esponenti uguali (con la stessa base) corrispondono valori uguali.</p>
       <div class="formula">a<sup>f(x)</sup> = a<sup>g(x)</sup>  ⟺  f(x) = g(x)   (a &gt; 0, a ≠ 1)</div>
 
@@ -323,7 +332,7 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
       <div class="ex"><b>Es.</b> 3<sup>x+1</sup> = 81 ⟹ 3<sup>x+1</sup> = 3<sup>4</sup> ⟹ x + 1 = 4 ⟹ x = 3.</div>
       <p>Se il secondo membro non è una potenza della base si usa il logaritmo:</p>
       <div class="formula">a<sup>x</sup> = b  (b &gt; 0)  ⟹  x = log<sub>a</sub>b</div>
-      <div class="warn">⚠️ Poiché a<sup>x</sup> &gt; 0 per ogni x, un'equazione come a<sup>x</sup> = b con <strong>b ≤ 0</strong> non ha soluzioni.</div>
+      <div class="warn">Poiché a<sup>x</sup> &gt; 0 per ogni x, un'equazione come a<sup>x</sup> = b con <strong>b ≤ 0</strong> non ha soluzioni.</div>
 
       <div class="diagram"><canvas id="cv-eqesp-th"></canvas><p class="cap">2<sup>x</sup> = 6: la soluzione è l'ascissa del punto in cui la curva incontra la retta y = 6.</p></div>
 
@@ -332,13 +341,13 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
       <div class="formula">t = a<sup>x</sup> ,  con  t &gt; 0   (così a<sup>2x</sup> = t<sup>2</sup>)</div>
       <p>Si ottiene un'equazione polinomiale in <em>t</em>; si tengono solo le soluzioni <strong>t &gt; 0</strong> e si torna all'incognita con a<sup>x</sup> = t.</p>
       <div class="ex"><b>Es.</b> 4<sup>x</sup> − 3·2<sup>x</sup> + 2 = 0. Con t = 2<sup>x</sup>: t<sup>2</sup> − 3t + 2 = 0 ⟹ t = 1, t = 2. Quindi 2<sup>x</sup> = 1 ⟹ x = 0; 2<sup>x</sup> = 2 ⟹ x = 1.</div>
-      <div class="tip">📌 Ricorda: 4<sup>x</sup> = (2<sup>2</sup>)<sup>x</sup> = (2<sup>x</sup>)<sup>2</sup> = t<sup>2</sup>. Riconoscere queste riscritture è il passo decisivo.</div>
+      <div class="tip">Ricorda: 4<sup>x</sup> = (2<sup>2</sup>)<sup>x</sup> = (2<sup>x</sup>)<sup>2</sup> = t<sup>2</sup>. Riconoscere queste riscritture è il passo decisivo.</div>
     </div>
   </div>
 
   <div class="subpanel" data-sub="sim">
     <div class="card">
-      <h2>🎛️ Risolvi a<sup>x</sup> = b graficamente</h2>
+      <h2>Risolvi a<sup>x</sup> = b graficamente</h2>
       <p>La soluzione di a<sup>x</sup> = b è l'ascissa dell'intersezione tra la curva y = a<sup>x</sup> e la retta orizzontale y = b.</p>
       <div class="diagram"><canvas id="cv-eqesp-sim"></canvas></div>
       <div class="sim-controls">
@@ -356,16 +365,16 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
 
 <!-- =================== EQUAZIONI LOGARITMICHE =================== -->
 <section class="scene" id="eqlog">
-  <div class="subnav">
-    <button class="subtab active" data-sub="teoria">📖 Teoria</button>
-    <button class="subtab" data-sub="sim">🎛️ Simulazioni</button>
-    <button class="subtab" data-sub="prova">✍️ Prova tu</button>
-    <button class="subtab" data-sub="quiz">🧩 Quiz</button>
+  <div class="subnav" role="tablist">
+    <button class="subtab active" role="tab" aria-selected="true" data-sub="teoria">Teoria</button>
+    <button class="subtab" role="tab" aria-selected="false" data-sub="sim">Simulazioni</button>
+    <button class="subtab" role="tab" aria-selected="false" data-sub="prova">Prova tu</button>
+    <button class="subtab" role="tab" aria-selected="false" data-sub="quiz">Quiz</button>
   </div>
 
   <div class="subpanel active" data-sub="teoria">
     <div class="card">
-      <h2>🔑 Equazioni logaritmiche</h2>
+      <h2>Equazioni logaritmiche</h2>
       <p>L'incognita compare nell'<strong>argomento</strong> di un logaritmo. Prima di tutto si scrivono le <strong>condizioni di esistenza (C.E.)</strong>: ogni argomento deve essere <strong>&gt; 0</strong>. Alla fine si verifica che le soluzioni le rispettino.</p>
 
       <h3>Metodo 1 — con la definizione</h3>
@@ -381,13 +390,13 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
       <div class="ex"><b>Es.</b> log(x + 2) = log(3x − 4). C.E.: x &gt; −2 e x &gt; 4/3. Uguaglio: x + 2 = 3x − 4 ⟹ x = 3 (accettabile).</div>
       <p>Spesso, prima di applicare il metodo, si usano le proprietà per scrivere un solo logaritmo per membro:</p>
       <div class="ex"><b>Es.</b> log<sub>2</sub>x + log<sub>2</sub>(x − 2) = 3 ⟹ log<sub>2</sub>[x(x − 2)] = 3 ⟹ x(x − 2) = 8 ⟹ x<sup>2</sup> − 2x − 8 = 0 ⟹ x = 4 (x = −2 scartata).</div>
-      <div class="warn">⚠️ Verificare sempre le C.E.: un valore che annulla o rende negativo un argomento <strong>va scartato</strong>, anche se risolve l'equazione algebrica.</div>
+      <div class="warn">Verificare sempre le C.E.: un valore che annulla o rende negativo un argomento <strong>va scartato</strong>, anche se risolve l'equazione algebrica.</div>
     </div>
   </div>
 
   <div class="subpanel" data-sub="sim">
     <div class="card">
-      <h2>🎛️ Risolvi log<sub>a</sub>x = b graficamente</h2>
+      <h2>Risolvi log<sub>a</sub>x = b graficamente</h2>
       <p>La soluzione di log<sub>a</sub>x = b è x = a<sup>b</sup>: l'ascissa del punto della curva y = log<sub>a</sub>x con ordinata b. Il dominio è x &gt; 0.</p>
       <div class="diagram"><canvas id="cv-eqlog-sim"></canvas></div>
       <div class="sim-controls">
@@ -405,26 +414,26 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
 
 <!-- =================== DISEQUAZIONI ESPONENZIALI =================== -->
 <section class="scene" id="disesp">
-  <div class="subnav">
-    <button class="subtab active" data-sub="teoria">📖 Teoria</button>
-    <button class="subtab" data-sub="sim">🎛️ Simulazioni</button>
-    <button class="subtab" data-sub="prova">✍️ Prova tu</button>
-    <button class="subtab" data-sub="quiz">🧩 Quiz</button>
+  <div class="subnav" role="tablist">
+    <button class="subtab active" role="tab" aria-selected="true" data-sub="teoria">Teoria</button>
+    <button class="subtab" role="tab" aria-selected="false" data-sub="sim">Simulazioni</button>
+    <button class="subtab" role="tab" aria-selected="false" data-sub="prova">Prova tu</button>
+    <button class="subtab" role="tab" aria-selected="false" data-sub="quiz">Quiz</button>
   </div>
 
   <div class="subpanel active" data-sub="teoria">
     <div class="card">
-      <h2>⚖️ Disequazioni esponenziali</h2>
+      <h2>Disequazioni esponenziali</h2>
       <p>Si risolvono riconducendo i due membri alla <strong>stessa base</strong> e confrontando gli esponenti. La regola dipende dalla <strong>monotonia</strong> dell'esponenziale, cioè dalla base.</p>
       <div class="formula">a &gt; 1 (crescente):  a<sup>f(x)</sup> &gt; a<sup>g(x)</sup>  ⟺  f(x) &gt; g(x)</div>
       <div class="formula">0 &lt; a &lt; 1 (decrescente):  a<sup>f(x)</sup> &gt; a<sup>g(x)</sup>  ⟺  f(x) &lt; g(x)</div>
-      <div class="warn">⚠️ Con base compresa tra 0 e 1 il <strong>verso della disuguaglianza si inverte</strong>. È l'errore più comune!</div>
+      <div class="warn">Con base compresa tra 0 e 1 il <strong>verso della disuguaglianza si inverte</strong>. È l'errore più comune!</div>
 
       <h3>Casi con un numero al secondo membro</h3>
       <p>Si scrive il numero come potenza della base: b = a<sup>k</sup>, poi si applica la regola.</p>
       <div class="ex"><b>Es.</b> 2<sup>x</sup> &gt; 8 ⟹ 2<sup>x</sup> &gt; 2<sup>3</sup>. Base 2 &gt; 1 ⟹ x &gt; 3.</div>
       <div class="ex"><b>Es.</b> (1/3)<sup>x</sup> &gt; 9 ⟹ 3<sup>−x</sup> &gt; 3<sup>2</sup>. Base 3 &gt; 1 ⟹ −x &gt; 2 ⟹ x &lt; −2.</div>
-      <div class="tip">📌 Poiché a<sup>x</sup> &gt; 0 sempre: a<sup>x</sup> &gt; (numero ≤ 0) è verificata per ogni x; a<sup>x</sup> &lt; (numero ≤ 0) non è mai verificata.</div>
+      <div class="tip">Poiché a<sup>x</sup> &gt; 0 sempre: a<sup>x</sup> &gt; (numero ≤ 0) è verificata per ogni x; a<sup>x</sup> &lt; (numero ≤ 0) non è mai verificata.</div>
 
       <div class="diagram"><canvas id="cv-disesp-th"></canvas><p class="cap">2<sup>x</sup> &gt; 4: la curva sta sopra la retta y = 4 per x &gt; 2 (zona evidenziata).</p></div>
     </div>
@@ -432,7 +441,7 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
 
   <div class="subpanel" data-sub="sim">
     <div class="card">
-      <h2>🎛️ Visualizza la soluzione di a<sup>x</sup> ≷ b</h2>
+      <h2>Visualizza la soluzione di a<sup>x</sup> ≷ b</h2>
       <p>La fascia arancione indica gli <em>x</em> che soddisfano la disequazione. Cambia la base da &gt; 1 a &lt; 1 e osserva come si ribalta.</p>
       <div class="diagram"><canvas id="cv-disesp-sim"></canvas></div>
       <div class="sim-controls">
@@ -452,20 +461,20 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
 
 <!-- =================== DISEQUAZIONI LOGARITMICHE =================== -->
 <section class="scene" id="dislog">
-  <div class="subnav">
-    <button class="subtab active" data-sub="teoria">📖 Teoria</button>
-    <button class="subtab" data-sub="sim">🎛️ Simulazioni</button>
-    <button class="subtab" data-sub="prova">✍️ Prova tu</button>
-    <button class="subtab" data-sub="quiz">🧩 Quiz</button>
+  <div class="subnav" role="tablist">
+    <button class="subtab active" role="tab" aria-selected="true" data-sub="teoria">Teoria</button>
+    <button class="subtab" role="tab" aria-selected="false" data-sub="sim">Simulazioni</button>
+    <button class="subtab" role="tab" aria-selected="false" data-sub="prova">Prova tu</button>
+    <button class="subtab" role="tab" aria-selected="false" data-sub="quiz">Quiz</button>
   </div>
 
   <div class="subpanel active" data-sub="teoria">
     <div class="card">
-      <h2>📐 Disequazioni logaritmiche</h2>
+      <h2>Disequazioni logaritmiche</h2>
       <p>Due passaggi obbligatori: prima le <strong>condizioni di esistenza</strong> (tutti gli argomenti &gt; 0), poi il confronto degli argomenti secondo la base. La soluzione finale è l'<strong>intersezione</strong> tra C.E. e disequazione risolta.</p>
       <div class="formula">a &gt; 1:  log<sub>a</sub>f(x) &gt; log<sub>a</sub>g(x)  ⟺  f(x) &gt; g(x)</div>
       <div class="formula">0 &lt; a &lt; 1:  log<sub>a</sub>f(x) &gt; log<sub>a</sub>g(x)  ⟺  f(x) &lt; g(x)</div>
-      <div class="warn">⚠️ Come per le esponenziali, con 0 &lt; a &lt; 1 il verso si <strong>inverte</strong>. E non dimenticare mai le C.E.</div>
+      <div class="warn">Come per le esponenziali, con 0 &lt; a &lt; 1 il verso si <strong>inverte</strong>. E non dimenticare mai le C.E.</div>
 
       <h3>Caso con un numero al secondo membro</h3>
       <p>Si scrive il numero come logaritmo: b = log<sub>a</sub>(a<sup>b</sup>).</p>
@@ -479,7 +488,7 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
 
   <div class="subpanel" data-sub="sim">
     <div class="card">
-      <h2>🎛️ Visualizza la soluzione di log<sub>a</sub>x ≷ b</h2>
+      <h2>Visualizza la soluzione di log<sub>a</sub>x ≷ b</h2>
       <p>Ricorda il dominio x &gt; 0. La fascia arancione mostra le soluzioni; cambia la base per vedere il ribaltamento.</p>
       <div class="diagram"><canvas id="cv-dislog-sim"></canvas></div>
       <div class="sim-controls">
@@ -723,7 +732,7 @@ const activeSub={basi:'teoria',eqesp:'teoria',eqlog:'teoria',disesp:'teoria',dis
 function renderFor(sec,sub){ const r=RENDERERS[sec]&&RENDERERS[sec][sub]; if(r) r(); }
 function show(id){
   stopAnim();
-  tabs.forEach(b=>b.classList.toggle('active',b.dataset.tab===id));
+  tabs.forEach(b=>{var on=b.dataset.tab===id;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
   scenes.forEach(s=>s.classList.toggle('active',s.id===id));
   window.scrollTo({top:0,behavior:'instant'});
   renderFor(id, activeSub[id]||'teoria');
@@ -731,7 +740,7 @@ function show(id){
 function showSub(sec,sub){
   stopAnim();
   const scene=document.getElementById(sec);
-  scene.querySelectorAll('.subtab').forEach(b=>b.classList.toggle('active',b.dataset.sub===sub));
+  scene.querySelectorAll('.subtab').forEach(b=>{var on=b.dataset.sub===sub;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
   scene.querySelectorAll('.subpanel').forEach(p=>p.classList.toggle('active',p.dataset.sub===sub));
   activeSub[sec]=sub;
   renderFor(sec,sub);
@@ -806,14 +815,14 @@ function renderProva(s){
   const el=document.getElementById('pv-'+s); if(!el) return;
   const ex=PV[s][pvState[s].i];
   el.innerHTML=`<div class="card">
-    <h2>✍️ Prova tu</h2>
+    <h2>Prova tu</h2>
     <div class="pv-q">Esercizio ${pvState[s].i+1} / ${PV[s].length}. &nbsp;${ex.q}</div>
     <div class="pv-controls">
       <input class="pv-input" id="pv-in-${s}" inputmode="text" placeholder="La tua risposta…" onkeydown="if(event.key==='Enter')checkProva('${s}')">
-      <button class="pv-btn" onclick="checkProva('${s}')">✓ Verifica</button>
-      <button class="pv-btn ghost" onclick="hintProva('${s}')">💡 Suggerimento</button>
-      <button class="pv-btn ghost" onclick="solProva('${s}')">📝 Soluzione</button>
-      <button class="pv-btn ghost" onclick="nextProva('${s}')">➡️ Nuovo</button>
+      <button class="pv-btn" onclick="checkProva('${s}')">Verifica</button>
+      <button class="pv-btn ghost" onclick="hintProva('${s}')">Suggerimento</button>
+      <button class="pv-btn ghost" onclick="solProva('${s}')">Soluzione</button>
+      <button class="pv-btn ghost" onclick="nextProva('${s}')">Nuovo</button>
     </div>
     <div id="pv-fb-${s}" class="pv-fb" style="display:none"></div>
     <div id="pv-hint-${s}" class="pv-hint" style="display:none"></div>
@@ -832,16 +841,16 @@ function checkProva(s){
   const ex=PV[s][pvState[s].i];
   const v=parseNum(document.getElementById('pv-in-'+s).value);
   const fb=document.getElementById('pv-fb-'+s); fb.style.display='';
-  if(isNaN(v)){ fb.className='pv-fb no'; fb.innerHTML='✗ Inserisci un numero (es. 3, −2 oppure 1/4).'; return; }
+  if(isNaN(v)){ fb.className='pv-fb no'; fb.innerHTML='Inserisci un numero (es. 3, −2 oppure 1/4).'; return; }
   const tol=ex.tol||1e-6;
-  if(Math.abs(v-ex.ans)<=tol){ fb.className='pv-fb ok'; fb.innerHTML='✓ Esatto! Risposta corretta.'; }
-  else { fb.className='pv-fb no'; fb.innerHTML='✗ Non ci siamo. Prova un suggerimento o guarda la soluzione passo-passo.'; }
+  if(Math.abs(v-ex.ans)<=tol){ fb.className='pv-fb ok'; fb.innerHTML='Esatto! Risposta corretta.'; }
+  else { fb.className='pv-fb no'; fb.innerHTML='Non ci siamo. Prova un suggerimento o guarda la soluzione passo-passo.'; }
 }
 function hintProva(s){
   const ex=PV[s][pvState[s].i], h=document.getElementById('pv-hint-'+s);
   pvState[s].hint=Math.min(pvState[s].hint+1, ex.hints.length);
   h.style.display='';
-  h.innerHTML='💡 '+ex.hints.slice(0,pvState[s].hint).map(x=>'<div>'+x+'</div>').join('');
+  h.innerHTML=''+ex.hints.slice(0,pvState[s].hint).map(x=>'<div>'+x+'</div>').join('');
   if(pvState[s].hint>=ex.hints.length) h.innerHTML+='<div style="opacity:.7;margin-top:.3rem">(nessun altro suggerimento)</div>';
 }
 function solProva(s){
@@ -856,114 +865,114 @@ function nextProva(s){
 /* ============ QUIZ ============ */
 const QUIZ={
 basi:[
-  {t:'mc',q:'La scrittura log<sub>a</sub>b = c equivale a:',opts:['a<sup>c</sup> = b','b<sup>c</sup> = a','a<sup>b</sup> = c','a·c = b'],ans:0,exp:'È la definizione di logaritmo: l\'esponente da dare ad a per ottenere b.'},
-  {t:'num',q:'Calcola log<sub>2</sub> 8.',ans:3,exp:'2<sup>3</sup> = 8.'},
-  {t:'num',q:'Calcola log<sub>3</sub> 81.',ans:4,exp:'3<sup>4</sup> = 81.'},
-  {t:'num',q:'Calcola log<sub>5</sub> 1.',ans:0,exp:'log<sub>a</sub> 1 = 0 per ogni base: a<sup>0</sup> = 1.'},
-  {t:'num',q:'Calcola log<sub>10</sub> 1000.',ans:3,exp:'10<sup>3</sup> = 1000.'},
-  {t:'num',q:'Calcola log<sub>2</sub> (1/4).',ans:-2,exp:'1/4 = 2<sup>−2</sup>.'},
-  {t:'mc',q:'Le condizioni perché log<sub>a</sub>b esista sono:',opts:['a &gt; 0, a ≠ 1, b &gt; 0','b &gt; 0 soltanto','a &gt; 1 e b &gt; 1','a qualsiasi, b qualsiasi'],ans:0,exp:'Base positiva e diversa da 1, argomento strettamente positivo.'},
-  {t:'mc',q:'log<sub>a</sub>(x·y) è uguale a:',opts:['log<sub>a</sub>x + log<sub>a</sub>y','log<sub>a</sub>x · log<sub>a</sub>y','log<sub>a</sub>x − log<sub>a</sub>y','log<sub>a</sub>(x+y)'],ans:0,exp:'Il logaritmo di un prodotto è la somma dei logaritmi.'},
-  {t:'mc',q:'log<sub>a</sub>(x/y) è uguale a:',opts:['log<sub>a</sub>x − log<sub>a</sub>y','log<sub>a</sub>x + log<sub>a</sub>y','log<sub>a</sub>x / log<sub>a</sub>y','log<sub>a</sub>(x−y)'],ans:0,exp:'Il logaritmo di un quoziente è la differenza dei logaritmi.'},
-  {t:'mc',q:'log<sub>a</sub>(x<sup>n</sup>) è uguale a:',opts:['n · log<sub>a</sub>x','log<sub>a</sub>x <sup>n</sup>','n + log<sub>a</sub>x','(log<sub>a</sub>x)/n'],ans:0,exp:'L\'esponente dell\'argomento esce come fattore.'},
-  {t:'num',q:'Usando le proprietà, quanto vale  log<sub>6</sub> 4 + log<sub>6</sub> 9 ?',ans:2,exp:'log<sub>6</sub>(4·9) = log<sub>6</sub> 36 = 2, perché 6<sup>2</sup> = 36.'},
-  {t:'num',q:'Quanto vale  log<sub>3</sub> 54 − log<sub>3</sub> 2 ?',ans:3,exp:'log<sub>3</sub>(54/2) = log<sub>3</sub> 27 = 3.'},
-  {t:'num',q:'Per ogni base a, quanto vale a<sup>0</sup> ?',ans:1,exp:'Qualsiasi base elevata a 0 dà 1.'},
-  {t:'mc',q:'La funzione y = a<sup>x</sup> con a &gt; 1 è:',opts:['crescente','decrescente','costante','periodica'],ans:0,exp:'Con base maggiore di 1 l\'esponenziale cresce.'},
-  {t:'mc',q:'La funzione y = (1/2)<sup>x</sup> è:',opts:['decrescente','crescente','costante','non definita'],ans:0,exp:'Base tra 0 e 1: la funzione decresce.'},
-  {t:'mc',q:'Il codominio (insieme dei valori) di y = a<sup>x</sup> è:',opts:['(0, +∞)','ℝ','[0, +∞)','(−∞, 0)'],ans:0,exp:'a<sup>x</sup> è sempre strettamente positiva.'},
-  {t:'mc',q:'La funzione y = log<sub>a</sub>x è:',opts:['l\'inversa di a<sup>x</sup>','uguale ad a<sup>x</sup>','un polinomio','l\'inversa di x<sup>a</sup>'],ans:0,exp:'Logaritmo ed esponenziale con la stessa base sono funzioni inverse.'},
-  {t:'mc',q:'Il dominio di y = log<sub>a</sub>x è:',opts:['(0, +∞)','ℝ','(−∞, 0)','ℝ ∖ {0}'],ans:0,exp:'L\'argomento del logaritmo deve essere &gt; 0.'},
-  {t:'num',q:'Quanto vale  2<sup>log<sub>2</sub> 7</sup> ?',ans:7,exp:'a<sup>x</sup> e log<sub>a</sub> sono inverse: a<sup>log<sub>a</sub> b</sup> = b.'},
-  {t:'num',q:'Quanto vale  log<sub>2</sub> (2<sup>5</sup>) ?',ans:5,exp:'log<sub>a</sub>(a<sup>n</sup>) = n.'}
+  {t:"mc",q:"La scrittura log<sub>a</sub>b = c equivale a:",opts:["a<sup>c</sup> = b","b<sup>c</sup> = a","a<sup>b</sup> = c","a·c = b"],ans:0,exp:"È la definizione di logaritmo: l'esponente da dare ad a per ottenere b."},
+  {t:"num",q:"Calcola log<sub>2</sub> 8.",ans:3,exp:"2<sup>3</sup> = 8."},
+  {t:"num",q:"Calcola log<sub>3</sub> 81.",ans:4,exp:"3<sup>4</sup> = 81."},
+  {t:"num",q:"Calcola log<sub>5</sub> 1.",ans:0,exp:"log<sub>a</sub> 1 = 0 per ogni base: a<sup>0</sup> = 1."},
+  {t:"num",q:"Calcola log<sub>10</sub> 1000.",ans:3,exp:"10<sup>3</sup> = 1000."},
+  {t:"num",q:"Calcola log<sub>2</sub> (1/4).",ans:-2,exp:"1/4 = 2<sup>−2</sup>."},
+  {t:"mc",q:"Le condizioni perché log<sub>a</sub>b esista sono:",opts:["b &gt; 0 soltanto","a &gt; 1 e b &gt; 1","a qualsiasi, b qualsiasi","a &gt; 0, a ≠ 1, b &gt; 0"],ans:3,exp:"Base positiva e diversa da 1, argomento strettamente positivo."},
+  {t:"mc",q:"log<sub>a</sub>(x·y) è uguale a:",opts:["log<sub>a</sub>x · log<sub>a</sub>y","log<sub>a</sub>x + log<sub>a</sub>y","log<sub>a</sub>x − log<sub>a</sub>y","log<sub>a</sub>(x+y)"],ans:1,exp:"Il logaritmo di un prodotto è la somma dei logaritmi."},
+  {t:"mc",q:"log<sub>a</sub>(x/y) è uguale a:",opts:["log<sub>a</sub>x − log<sub>a</sub>y","log<sub>a</sub>x + log<sub>a</sub>y","log<sub>a</sub>x / log<sub>a</sub>y","log<sub>a</sub>(x−y)"],ans:0,exp:"Il logaritmo di un quoziente è la differenza dei logaritmi."},
+  {t:"mc",q:"log<sub>a</sub>(x<sup>n</sup>) è uguale a:",opts:["log<sub>a</sub>x <sup>n</sup>","n + log<sub>a</sub>x","n · log<sub>a</sub>x","(log<sub>a</sub>x)/n"],ans:2,exp:"L'esponente dell'argomento esce come fattore."},
+  {t:"num",q:"Usando le proprietà, quanto vale  log<sub>6</sub> 4 + log<sub>6</sub> 9 ?",ans:2,exp:"log<sub>6</sub>(4·9) = log<sub>6</sub> 36 = 2, perché 6<sup>2</sup> = 36."},
+  {t:"num",q:"Quanto vale  log<sub>3</sub> 54 − log<sub>3</sub> 2 ?",ans:3,exp:"log<sub>3</sub>(54/2) = log<sub>3</sub> 27 = 3."},
+  {t:"num",q:"Per ogni base a, quanto vale a<sup>0</sup> ?",ans:1,exp:"Qualsiasi base elevata a 0 dà 1."},
+  {t:"mc",q:"La funzione y = a<sup>x</sup> con a &gt; 1 è:",opts:["crescente","decrescente","costante","periodica"],ans:0,exp:"Con base maggiore di 1 l'esponenziale cresce."},
+  {t:"mc",q:"La funzione y = (1/2)<sup>x</sup> è:",opts:["crescente","costante","non definita","decrescente"],ans:3,exp:"Base tra 0 e 1: la funzione decresce."},
+  {t:"mc",q:"Il codominio (insieme dei valori) di y = a<sup>x</sup> è:",opts:["ℝ","(0, +∞)","[0, +∞)","(−∞, 0)"],ans:1,exp:"a<sup>x</sup> è sempre strettamente positiva."},
+  {t:"mc",q:"La funzione y = log<sub>a</sub>x è:",opts:["uguale ad a<sup>x</sup>","un polinomio","l'inversa di a<sup>x</sup>","l'inversa di x<sup>a</sup>"],ans:2,exp:"Logaritmo ed esponenziale con la stessa base sono funzioni inverse."},
+  {t:"mc",q:"Il dominio di y = log<sub>a</sub>x è:",opts:["ℝ","(0, +∞)","(−∞, 0)","ℝ ∖ {0}"],ans:1,exp:"L'argomento del logaritmo deve essere &gt; 0."},
+  {t:"num",q:"Quanto vale  2<sup>log<sub>2</sub> 7</sup> ?",ans:7,exp:"a<sup>x</sup> e log<sub>a</sub> sono inverse: a<sup>log<sub>a</sub> b</sup> = b."},
+  {t:"num",q:"Quanto vale  log<sub>2</sub> (2<sup>5</sup>) ?",ans:5,exp:"log<sub>a</sub>(a<sup>n</sup>) = n."}
 ],
 eqesp:[
-  {t:'mc',q:'L\'equazione 2<sup>x</sup> = 2<sup>5</sup> equivale a:',opts:['x = 5','x = 2','x = 10','x = 32'],ans:0,exp:'Stessa base ⟹ esponenti uguali.'},
-  {t:'num',q:'Risolvi 2<sup>x</sup> = 32.',ans:5,exp:'32 = 2<sup>5</sup> ⟹ x = 5.'},
-  {t:'num',q:'Risolvi 3<sup>x</sup> = 81.',ans:4,exp:'81 = 3<sup>4</sup> ⟹ x = 4.'},
-  {t:'num',q:'Risolvi 5<sup>x</sup> = 125.',ans:3,exp:'125 = 5<sup>3</sup> ⟹ x = 3.'},
-  {t:'num',q:'Risolvi 2<sup>x+1</sup> = 16.',ans:3,exp:'16 = 2<sup>4</sup> ⟹ x + 1 = 4 ⟹ x = 3.'},
-  {t:'num',q:'Risolvi (1/2)<sup>x</sup> = 8.',ans:-3,exp:'(1/2)<sup>x</sup> = 2<sup>−x</sup>; 8 = 2<sup>3</sup> ⟹ −x = 3 ⟹ x = −3.'},
-  {t:'num',q:'Risolvi 3<sup>2x</sup> = 81.',ans:2,exp:'81 = 3<sup>4</sup> ⟹ 2x = 4 ⟹ x = 2.'},
-  {t:'num',q:'Risolvi 4<sup>x</sup> = 8.',ans:1.5,tol:0.01,exp:'2<sup>2x</sup> = 2<sup>3</sup> ⟹ 2x = 3 ⟹ x = 3/2 = 1.5.'},
-  {t:'mc',q:'L\'equazione a<sup>x</sup> = b con b ≤ 0:',opts:['non ha soluzioni','ha una soluzione','ha due soluzioni','ha infinite soluzioni'],ans:0,exp:'a<sup>x</sup> &gt; 0 sempre, quindi non può uguagliare un numero ≤ 0.'},
-  {t:'num',q:'Risolvi 2<sup>x</sup> = 1.',ans:0,exp:'1 = 2<sup>0</sup> ⟹ x = 0.'},
-  {t:'mc',q:'Per risolvere 4<sup>x</sup> − 3·2<sup>x</sup> + 2 = 0 conviene porre:',opts:['t = 2<sup>x</sup>','t = 4<sup>x</sup>','t = x<sup>2</sup>','t = log<sub>2</sub>x'],ans:0,exp:'Con t = 2<sup>x</sup> si ha 4<sup>x</sup> = t<sup>2</sup>, e l\'equazione diventa t<sup>2</sup> − 3t + 2 = 0.'},
-  {t:'num',q:'4<sup>x</sup> − 3·2<sup>x</sup> + 2 = 0: inserisci la soluzione minore.',ans:0,exp:'t = 1, 2 ⟹ x = 0, 1. La minore è 0.'},
-  {t:'num',q:'4<sup>x</sup> − 3·2<sup>x</sup> + 2 = 0: inserisci la soluzione maggiore.',ans:1,exp:'t = 1, 2 ⟹ x = 0, 1. La maggiore è 1.'},
-  {t:'num',q:'9<sup>x</sup> − 4·3<sup>x</sup> + 3 = 0: inserisci la soluzione maggiore.',ans:1,exp:'t = 3<sup>x</sup> ⟹ t<sup>2</sup> − 4t + 3 = 0 ⟹ t = 1, 3 ⟹ x = 0, 1.'},
-  {t:'num',q:'Risolvi e<sup>x</sup> = 1.',ans:0,exp:'1 = e<sup>0</sup> ⟹ x = 0.'},
-  {t:'num',q:'Risolvi 2<sup>x<sup>2</sup></sup> = 16  (inserisci la soluzione positiva).',ans:2,exp:'16 = 2<sup>4</sup> ⟹ x<sup>2</sup> = 4 ⟹ x = ±2; positiva: 2.'},
-  {t:'num',q:'Risolvi 3<sup>x+1</sup> = 3<sup>2x−1</sup>.',ans:2,exp:'Stessa base ⟹ x + 1 = 2x − 1 ⟹ x = 2.'},
-  {t:'num',q:'Risolvi 10<sup>x</sup> = 1000.',ans:3,exp:'1000 = 10<sup>3</sup> ⟹ x = 3.'},
-  {t:'num',q:'Risolvi (1/3)<sup>x</sup> = 9.',ans:-2,exp:'3<sup>−x</sup> = 3<sup>2</sup> ⟹ −x = 2 ⟹ x = −2.'},
-  {t:'mc',q:'L\'equazione 2<sup>x</sup> = −4 ha:',opts:['nessuna soluzione','x = 2','x = −2','x = log<sub>2</sub>4'],ans:0,exp:'Un\'esponenziale non assume mai valori negativi.'}
+  {t:"mc",q:"L'equazione 2<sup>x</sup> = 2<sup>5</sup> equivale a:",opts:["x = 2","x = 10","x = 5","x = 32"],ans:2,exp:"Stessa base ⟹ esponenti uguali."},
+  {t:"num",q:"Risolvi 2<sup>x</sup> = 32.",ans:5,exp:"32 = 2<sup>5</sup> ⟹ x = 5."},
+  {t:"num",q:"Risolvi 3<sup>x</sup> = 81.",ans:4,exp:"81 = 3<sup>4</sup> ⟹ x = 4."},
+  {t:"num",q:"Risolvi 5<sup>x</sup> = 125.",ans:3,exp:"125 = 5<sup>3</sup> ⟹ x = 3."},
+  {t:"num",q:"Risolvi 2<sup>x+1</sup> = 16.",ans:3,exp:"16 = 2<sup>4</sup> ⟹ x + 1 = 4 ⟹ x = 3."},
+  {t:"num",q:"Risolvi (1/2)<sup>x</sup> = 8.",ans:-3,exp:"(1/2)<sup>x</sup> = 2<sup>−x</sup>; 8 = 2<sup>3</sup> ⟹ −x = 3 ⟹ x = −3."},
+  {t:"num",q:"Risolvi 3<sup>2x</sup> = 81.",ans:2,exp:"81 = 3<sup>4</sup> ⟹ 2x = 4 ⟹ x = 2."},
+  {t:"num",q:"Risolvi 4<sup>x</sup> = 8.",ans:1.5,tol:0.01,exp:"2<sup>2x</sup> = 2<sup>3</sup> ⟹ 2x = 3 ⟹ x = 3/2 = 1.5."},
+  {t:"mc",q:"L'equazione a<sup>x</sup> = b con b ≤ 0:",opts:["ha una soluzione","non ha soluzioni","ha due soluzioni","ha infinite soluzioni"],ans:1,exp:"a<sup>x</sup> &gt; 0 sempre, quindi non può uguagliare un numero ≤ 0."},
+  {t:"num",q:"Risolvi 2<sup>x</sup> = 1.",ans:0,exp:"1 = 2<sup>0</sup> ⟹ x = 0."},
+  {t:"mc",q:"Per risolvere 4<sup>x</sup> − 3·2<sup>x</sup> + 2 = 0 conviene porre:",opts:["t = 4<sup>x</sup>","t = x<sup>2</sup>","t = log<sub>2</sub>x","t = 2<sup>x</sup>"],ans:3,exp:"Con t = 2<sup>x</sup> si ha 4<sup>x</sup> = t<sup>2</sup>, e l'equazione diventa t<sup>2</sup> − 3t + 2 = 0."},
+  {t:"num",q:"4<sup>x</sup> − 3·2<sup>x</sup> + 2 = 0: inserisci la soluzione minore.",ans:0,exp:"t = 1, 2 ⟹ x = 0, 1. La minore è 0."},
+  {t:"num",q:"4<sup>x</sup> − 3·2<sup>x</sup> + 2 = 0: inserisci la soluzione maggiore.",ans:1,exp:"t = 1, 2 ⟹ x = 0, 1. La maggiore è 1."},
+  {t:"num",q:"9<sup>x</sup> − 4·3<sup>x</sup> + 3 = 0: inserisci la soluzione maggiore.",ans:1,exp:"t = 3<sup>x</sup> ⟹ t<sup>2</sup> − 4t + 3 = 0 ⟹ t = 1, 3 ⟹ x = 0, 1."},
+  {t:"num",q:"Risolvi e<sup>x</sup> = 1.",ans:0,exp:"1 = e<sup>0</sup> ⟹ x = 0."},
+  {t:"num",q:"Risolvi 2<sup>x<sup>2</sup></sup> = 16  (inserisci la soluzione positiva).",ans:2,exp:"16 = 2<sup>4</sup> ⟹ x<sup>2</sup> = 4 ⟹ x = ±2; positiva: 2."},
+  {t:"num",q:"Risolvi 3<sup>x+1</sup> = 3<sup>2x−1</sup>.",ans:2,exp:"Stessa base ⟹ x + 1 = 2x − 1 ⟹ x = 2."},
+  {t:"num",q:"Risolvi 10<sup>x</sup> = 1000.",ans:3,exp:"1000 = 10<sup>3</sup> ⟹ x = 3."},
+  {t:"num",q:"Risolvi (1/3)<sup>x</sup> = 9.",ans:-2,exp:"3<sup>−x</sup> = 3<sup>2</sup> ⟹ −x = 2 ⟹ x = −2."},
+  {t:"mc",q:"L'equazione 2<sup>x</sup> = −4 ha:",opts:["nessuna soluzione","x = 2","x = −2","x = log<sub>2</sub>4"],ans:0,exp:"Un'esponenziale non assume mai valori negativi."}
 ],
 eqlog:[
-  {t:'mc',q:'L\'equazione log<sub>a</sub>f(x) = b (con la definizione) equivale a:',opts:['f(x) = a<sup>b</sup>','f(x) = b·a','f(x) = b<sup>a</sup>','f(x) = a/b'],ans:0,exp:'Per definizione di logaritmo.'},
-  {t:'num',q:'Risolvi log<sub>2</sub> x = 3.',ans:8,exp:'x = 2<sup>3</sup> = 8.'},
-  {t:'num',q:'Risolvi log<sub>3</sub> x = 2.',ans:9,exp:'x = 3<sup>2</sup> = 9.'},
-  {t:'num',q:'Risolvi log<sub>2</sub>(x − 1) = 3.',ans:9,exp:'x − 1 = 8 ⟹ x = 9.'},
-  {t:'num',q:'Risolvi log<sub>5</sub>(2x) = 1.',ans:2.5,tol:0.01,exp:'2x = 5<sup>1</sup> = 5 ⟹ x = 2.5.'},
-  {t:'num',q:'Risolvi log x = 2  (base 10).',ans:100,exp:'x = 10<sup>2</sup> = 100.'},
-  {t:'mc',q:'log<sub>a</sub>f(x) = log<sub>a</sub>g(x) equivale a f(x) = g(x), a patto che:',opts:['f(x) &gt; 0 e g(x) &gt; 0','f(x) = g(x) sempre','a &gt; 1','f(x) &lt; 0'],ans:0,exp:'Servono le condizioni di esistenza: entrambi gli argomenti positivi.'},
-  {t:'num',q:'Risolvi log(x + 1) = log(2x − 3)  (base 10).',ans:4,exp:'x + 1 = 2x − 3 ⟹ x = 4; argomenti positivi: ok.'},
-  {t:'num',q:'Risolvi log<sub>2</sub>(3x) = log<sub>2</sub>(x + 4).',ans:2,exp:'3x = x + 4 ⟹ x = 2; argomenti positivi: ok.'},
-  {t:'mc',q:'Perché in un\'equazione logaritmica si controllano le C.E.?',opts:['per scartare soluzioni con argomento ≤ 0','per trovare più soluzioni','per cambiare base','non servono'],ans:0,exp:'Una soluzione algebrica che rende un argomento ≤ 0 va scartata.'},
-  {t:'num',q:'Risolvi log<sub>2</sub> x + log<sub>2</sub>(x − 2) = 3.',ans:4,exp:'x(x−2)=8 ⟹ x<sup>2</sup>−2x−8=0 ⟹ x=4 (x=−2 scartata).'},
-  {t:'num',q:'Risolvi ln x = 0.',ans:1,exp:'x = e<sup>0</sup> = 1.'},
-  {t:'num',q:'Risolvi log<sub>2</sub>(x + 3) = 4.',ans:13,exp:'x + 3 = 2<sup>4</sup> = 16 ⟹ x = 13.'},
-  {t:'num',q:'Risolvi 2·log<sub>2</sub> x = 6.',ans:8,exp:'log<sub>2</sub> x = 3 ⟹ x = 2<sup>3</sup> = 8.'},
-  {t:'num',q:'Risolvi log(x) = log(3)  (base 10).',ans:3,exp:'Stessa base ⟹ x = 3.'},
-  {t:'num',q:'Risolvi log<sub>4</sub> x = 0.5.',ans:2,exp:'x = 4<sup>1/2</sup> = 2.'},
-  {t:'num',q:'Risolvi log<sub>2</sub>(x − 1) = log<sub>2</sub> 5.',ans:6,exp:'x − 1 = 5 ⟹ x = 6.'},
-  {t:'num',q:'Risolvi log<sub>2</sub> x = −1.',ans:0.5,tol:0.01,exp:'x = 2<sup>−1</sup> = 1/2 = 0.5.'},
-  {t:'num',q:'Risolvi log<sub>5</sub> x = 2.',ans:25,exp:'x = 5<sup>2</sup> = 25.'},
-  {t:'num',q:'log(x) + log(x − 3) = 1 (base 10): inserisci la soluzione accettabile.',ans:5,exp:'x(x−3)=10 ⟹ x<sup>2</sup>−3x−10=0 ⟹ x=5 ∨ x=−2; accettabile x=5.'}
+  {t:"mc",q:"L'equazione log<sub>a</sub>f(x) = b (con la definizione) equivale a:",opts:["f(x) = b·a","f(x) = b<sup>a</sup>","f(x) = a<sup>b</sup>","f(x) = a/b"],ans:2,exp:"Per definizione di logaritmo."},
+  {t:"num",q:"Risolvi log<sub>2</sub> x = 3.",ans:8,exp:"x = 2<sup>3</sup> = 8."},
+  {t:"num",q:"Risolvi log<sub>3</sub> x = 2.",ans:9,exp:"x = 3<sup>2</sup> = 9."},
+  {t:"num",q:"Risolvi log<sub>2</sub>(x − 1) = 3.",ans:9,exp:"x − 1 = 8 ⟹ x = 9."},
+  {t:"num",q:"Risolvi log<sub>5</sub>(2x) = 1.",ans:2.5,tol:0.01,exp:"2x = 5<sup>1</sup> = 5 ⟹ x = 2.5."},
+  {t:"num",q:"Risolvi log x = 2  (base 10).",ans:100,exp:"x = 10<sup>2</sup> = 100."},
+  {t:"mc",q:"log<sub>a</sub>f(x) = log<sub>a</sub>g(x) equivale a f(x) = g(x), a patto che:",opts:["f(x) &gt; 0 e g(x) &gt; 0","f(x) = g(x) sempre","a &gt; 1","f(x) &lt; 0"],ans:0,exp:"Servono le condizioni di esistenza: entrambi gli argomenti positivi."},
+  {t:"num",q:"Risolvi log(x + 1) = log(2x − 3)  (base 10).",ans:4,exp:"x + 1 = 2x − 3 ⟹ x = 4; argomenti positivi: ok."},
+  {t:"num",q:"Risolvi log<sub>2</sub>(3x) = log<sub>2</sub>(x + 4).",ans:2,exp:"3x = x + 4 ⟹ x = 2; argomenti positivi: ok."},
+  {t:"mc",q:"Perché in un'equazione logaritmica si controllano le C.E.?",opts:["per trovare più soluzioni","per scartare soluzioni con argomento ≤ 0","per cambiare base","non servono"],ans:1,exp:"Una soluzione algebrica che rende un argomento ≤ 0 va scartata."},
+  {t:"num",q:"Risolvi log<sub>2</sub> x + log<sub>2</sub>(x − 2) = 3.",ans:4,exp:"x(x−2)=8 ⟹ x<sup>2</sup>−2x−8=0 ⟹ x=4 (x=−2 scartata)."},
+  {t:"num",q:"Risolvi ln x = 0.",ans:1,exp:"x = e<sup>0</sup> = 1."},
+  {t:"num",q:"Risolvi log<sub>2</sub>(x + 3) = 4.",ans:13,exp:"x + 3 = 2<sup>4</sup> = 16 ⟹ x = 13."},
+  {t:"num",q:"Risolvi 2·log<sub>2</sub> x = 6.",ans:8,exp:"log<sub>2</sub> x = 3 ⟹ x = 2<sup>3</sup> = 8."},
+  {t:"num",q:"Risolvi log(x) = log(3)  (base 10).",ans:3,exp:"Stessa base ⟹ x = 3."},
+  {t:"num",q:"Risolvi log<sub>4</sub> x = 0.5.",ans:2,exp:"x = 4<sup>1/2</sup> = 2."},
+  {t:"num",q:"Risolvi log<sub>2</sub>(x − 1) = log<sub>2</sub> 5.",ans:6,exp:"x − 1 = 5 ⟹ x = 6."},
+  {t:"num",q:"Risolvi log<sub>2</sub> x = −1.",ans:0.5,tol:0.01,exp:"x = 2<sup>−1</sup> = 1/2 = 0.5."},
+  {t:"num",q:"Risolvi log<sub>5</sub> x = 2.",ans:25,exp:"x = 5<sup>2</sup> = 25."},
+  {t:"num",q:"log(x) + log(x − 3) = 1 (base 10): inserisci la soluzione accettabile.",ans:5,exp:"x(x−3)=10 ⟹ x<sup>2</sup>−3x−10=0 ⟹ x=5 ∨ x=−2; accettabile x=5."}
 ],
 disesp:[
-  {t:'mc',q:'Con a &gt; 1, da a<sup>f</sup> &gt; a<sup>g</sup> segue:',opts:['f &gt; g','f &lt; g','f = g','dipende da g'],ans:0,exp:'Base &gt; 1: la funzione è crescente, il verso si mantiene.'},
-  {t:'mc',q:'Con 0 &lt; a &lt; 1, da a<sup>f</sup> &gt; a<sup>g</sup> segue:',opts:['f &lt; g','f &gt; g','f = g','nessuna soluzione'],ans:0,exp:'Base &lt; 1: la funzione è decrescente, il verso si inverte.'},
-  {t:'num',q:'2<sup>x</sup> &gt; 8 ⟺ x &gt; k. Quanto vale k?',ans:3,exp:'8 = 2<sup>3</sup>; base &gt; 1 ⟹ x &gt; 3.'},
-  {t:'num',q:'2<sup>x</sup> &lt; 16 ⟺ x &lt; k. Quanto vale k?',ans:4,exp:'16 = 2<sup>4</sup>; base &gt; 1 ⟹ x &lt; 4.'},
-  {t:'mc',q:'(1/2)<sup>x</sup> &gt; 4 equivale a:',opts:['x &lt; −2','x &gt; −2','x &gt; 2','x &lt; 2'],ans:0,exp:'4 = (1/2)<sup>−2</sup>; base &lt; 1 inverte: x &lt; −2.'},
-  {t:'num',q:'3<sup>x</sup> ≥ 27 ⟺ x ≥ k. Quanto vale k?',ans:3,exp:'27 = 3<sup>3</sup>; base &gt; 1 ⟹ x ≥ 3.'},
-  {t:'num',q:'(1/3)<sup>x</sup> &gt; 9 ⟺ x &lt; k. Quanto vale k?',ans:-2,exp:'(1/3)<sup>x</sup> = 3<sup>−x</sup>, 9 = 3<sup>2</sup> ⟹ −x &gt; 2 ⟹ x &lt; −2.'},
-  {t:'mc',q:'La disequazione 2<sup>x</sup> &gt; −5 è:',opts:['verificata per ogni x','mai verificata','verificata solo per x &gt; 0','verificata solo per x &lt; 0'],ans:0,exp:'2<sup>x</sup> &gt; 0 &gt; −5 per ogni x reale.'},
-  {t:'mc',q:'La disequazione 2<sup>x</sup> &lt; −1:',opts:['non ha soluzioni','x &lt; 0','x &gt; 0','x = −1'],ans:0,exp:'Un\'esponenziale è sempre positiva, non può essere &lt; −1.'},
-  {t:'num',q:'2<sup>x+1</sup> &gt; 8 ⟺ x &gt; k. Quanto vale k?',ans:2,exp:'8 = 2<sup>3</sup> ⟹ x + 1 &gt; 3 ⟹ x &gt; 2.'},
-  {t:'num',q:'5<sup>2x</sup> &gt; 25 ⟺ x &gt; k. Quanto vale k?',ans:1,exp:'25 = 5<sup>2</sup> ⟹ 2x &gt; 2 ⟹ x &gt; 1.'},
-  {t:'mc',q:'Con 0 &lt; a &lt; 1 la funzione a<sup>x</sup> è decrescente; questo implica che nelle disequazioni:',opts:['il verso si inverte','il verso resta uguale','non ci sono soluzioni','la base va cambiata'],ans:0,exp:'La monotonia decrescente ribalta la disuguaglianza.'},
-  {t:'num',q:'(1/2)<sup>x</sup> ≤ 8 ⟺ x ≥ k. Quanto vale k?',ans:-3,exp:'2<sup>−x</sup> ≤ 2<sup>3</sup> ⟹ −x ≤ 3 ⟹ x ≥ −3.'},
-  {t:'num',q:'4<sup>x</sup> &gt; 2 ⟺ x &gt; k. Quanto vale k?',ans:0.5,tol:0.01,exp:'2<sup>2x</sup> &gt; 2<sup>1</sup> ⟹ 2x &gt; 1 ⟹ x &gt; 0.5.'},
-  {t:'mc',q:'3<sup>x</sup> &gt; 1 equivale a:',opts:['x &gt; 0','x &lt; 0','x &gt; 1','x &lt; 1'],ans:0,exp:'1 = 3<sup>0</sup>; base &gt; 1 ⟹ x &gt; 0.'},
-  {t:'num',q:'3<sup>x</sup> &lt; 1 ⟺ x &lt; k. Quanto vale k?',ans:0,exp:'1 = 3<sup>0</sup>; base &gt; 1 ⟹ x &lt; 0.'},
-  {t:'num',q:'2<sup>x−3</sup> ≥ 1 ⟺ x ≥ k. Quanto vale k?',ans:3,exp:'1 = 2<sup>0</sup> ⟹ x − 3 ≥ 0 ⟹ x ≥ 3.'},
-  {t:'mc',q:'La soluzione di 2<sup>x</sup> &gt; 0 è:',opts:['ogni x reale','x &gt; 0','x &gt; 1','nessuna'],ans:0,exp:'L\'esponenziale è sempre positiva.'},
-  {t:'num',q:'9<sup>x</sup> &gt; 3 ⟺ x &gt; k. Quanto vale k?',ans:0.5,tol:0.01,exp:'3<sup>2x</sup> &gt; 3<sup>1</sup> ⟹ 2x &gt; 1 ⟹ x &gt; 0.5.'},
-  {t:'mc',q:'(2/3)<sup>x</sup> &gt; 1 equivale a:',opts:['x &lt; 0','x &gt; 0','x &gt; 1','x &lt; 1'],ans:0,exp:'1 = (2/3)<sup>0</sup>; base &lt; 1 inverte: x &lt; 0.'}
+  {t:"mc",q:"Con a &gt; 1, da a<sup>f</sup> &gt; a<sup>g</sup> segue:",opts:["f &gt; g","f &lt; g","f = g","dipende da g"],ans:0,exp:"Base &gt; 1: la funzione è crescente, il verso si mantiene."},
+  {t:"mc",q:"Con 0 &lt; a &lt; 1, da a<sup>f</sup> &gt; a<sup>g</sup> segue:",opts:["f &gt; g","f = g","f &lt; g","nessuna soluzione"],ans:2,exp:"Base &lt; 1: la funzione è decrescente, il verso si inverte."},
+  {t:"num",q:"2<sup>x</sup> &gt; 8 ⟺ x &gt; k. Quanto vale k?",ans:3,exp:"8 = 2<sup>3</sup>; base &gt; 1 ⟹ x &gt; 3."},
+  {t:"num",q:"2<sup>x</sup> &lt; 16 ⟺ x &lt; k. Quanto vale k?",ans:4,exp:"16 = 2<sup>4</sup>; base &gt; 1 ⟹ x &lt; 4."},
+  {t:"mc",q:"(1/2)<sup>x</sup> &gt; 4 equivale a:",opts:["x &lt; −2","x &gt; −2","x &gt; 2","x &lt; 2"],ans:0,exp:"4 = (1/2)<sup>−2</sup>; base &lt; 1 inverte: x &lt; −2."},
+  {t:"num",q:"3<sup>x</sup> ≥ 27 ⟺ x ≥ k. Quanto vale k?",ans:3,exp:"27 = 3<sup>3</sup>; base &gt; 1 ⟹ x ≥ 3."},
+  {t:"num",q:"(1/3)<sup>x</sup> &gt; 9 ⟺ x &lt; k. Quanto vale k?",ans:-2,exp:"(1/3)<sup>x</sup> = 3<sup>−x</sup>, 9 = 3<sup>2</sup> ⟹ −x &gt; 2 ⟹ x &lt; −2."},
+  {t:"mc",q:"La disequazione 2<sup>x</sup> &gt; −5 è:",opts:["mai verificata","verificata solo per x &gt; 0","verificata per ogni x","verificata solo per x &lt; 0"],ans:2,exp:"2<sup>x</sup> &gt; 0 &gt; −5 per ogni x reale."},
+  {t:"mc",q:"La disequazione 2<sup>x</sup> &lt; −1:",opts:["x &lt; 0","x &gt; 0","x = −1","non ha soluzioni"],ans:3,exp:"Un'esponenziale è sempre positiva, non può essere &lt; −1."},
+  {t:"num",q:"2<sup>x+1</sup> &gt; 8 ⟺ x &gt; k. Quanto vale k?",ans:2,exp:"8 = 2<sup>3</sup> ⟹ x + 1 &gt; 3 ⟹ x &gt; 2."},
+  {t:"num",q:"5<sup>2x</sup> &gt; 25 ⟺ x &gt; k. Quanto vale k?",ans:1,exp:"25 = 5<sup>2</sup> ⟹ 2x &gt; 2 ⟹ x &gt; 1."},
+  {t:"mc",q:"Con 0 &lt; a &lt; 1 la funzione a<sup>x</sup> è decrescente; questo implica che nelle disequazioni:",opts:["il verso resta uguale","il verso si inverte","non ci sono soluzioni","la base va cambiata"],ans:1,exp:"La monotonia decrescente ribalta la disuguaglianza."},
+  {t:"num",q:"(1/2)<sup>x</sup> ≤ 8 ⟺ x ≥ k. Quanto vale k?",ans:-3,exp:"2<sup>−x</sup> ≤ 2<sup>3</sup> ⟹ −x ≤ 3 ⟹ x ≥ −3."},
+  {t:"num",q:"4<sup>x</sup> &gt; 2 ⟺ x &gt; k. Quanto vale k?",ans:0.5,tol:0.01,exp:"2<sup>2x</sup> &gt; 2<sup>1</sup> ⟹ 2x &gt; 1 ⟹ x &gt; 0.5."},
+  {t:"mc",q:"3<sup>x</sup> &gt; 1 equivale a:",opts:["x &lt; 0","x &gt; 0","x &gt; 1","x &lt; 1"],ans:1,exp:"1 = 3<sup>0</sup>; base &gt; 1 ⟹ x &gt; 0."},
+  {t:"num",q:"3<sup>x</sup> &lt; 1 ⟺ x &lt; k. Quanto vale k?",ans:0,exp:"1 = 3<sup>0</sup>; base &gt; 1 ⟹ x &lt; 0."},
+  {t:"num",q:"2<sup>x−3</sup> ≥ 1 ⟺ x ≥ k. Quanto vale k?",ans:3,exp:"1 = 2<sup>0</sup> ⟹ x − 3 ≥ 0 ⟹ x ≥ 3."},
+  {t:"mc",q:"La soluzione di 2<sup>x</sup> &gt; 0 è:",opts:["ogni x reale","x &gt; 0","x &gt; 1","nessuna"],ans:0,exp:"L'esponenziale è sempre positiva."},
+  {t:"num",q:"9<sup>x</sup> &gt; 3 ⟺ x &gt; k. Quanto vale k?",ans:0.5,tol:0.01,exp:"3<sup>2x</sup> &gt; 3<sup>1</sup> ⟹ 2x &gt; 1 ⟹ x &gt; 0.5."},
+  {t:"mc",q:"(2/3)<sup>x</sup> &gt; 1 equivale a:",opts:["x &gt; 0","x &gt; 1","x &lt; 1","x &lt; 0"],ans:3,exp:"1 = (2/3)<sup>0</sup>; base &lt; 1 inverte: x &lt; 0."}
 ],
 dislog:[
-  {t:'mc',q:'Prima di risolvere una disequazione logaritmica si impongono le C.E., cioè:',opts:['ogni argomento &gt; 0','ogni argomento ≠ 0','la base &gt; 1','x &gt; 1'],ans:0,exp:'Gli argomenti dei logaritmi devono essere strettamente positivi.'},
-  {t:'mc',q:'Con a &gt; 1, da log<sub>a</sub>f &gt; log<sub>a</sub>g (con f, g &gt; 0) segue:',opts:['f &gt; g','f &lt; g','f = g','f &gt; 0'],ans:0,exp:'Base &gt; 1: logaritmo crescente, verso invariato.'},
-  {t:'mc',q:'Con 0 &lt; a &lt; 1, da log<sub>a</sub>f &gt; log<sub>a</sub>g segue:',opts:['f &lt; g','f &gt; g','f = g','nessuna soluzione'],ans:0,exp:'Base &lt; 1: logaritmo decrescente, verso invertito.'},
-  {t:'num',q:'log<sub>2</sub> x &gt; 3 ⟺ x &gt; k. Quanto vale k?',ans:8,exp:'3 = log<sub>2</sub> 8; base &gt; 1 ⟹ x &gt; 8 (con x &gt; 0).'},
-  {t:'num',q:'log<sub>2</sub> x &lt; 4 ⟺ 0 &lt; x &lt; k. Quanto vale k?',ans:16,exp:'4 = log<sub>2</sub> 16; base &gt; 1 ⟹ x &lt; 16; con C.E. 0 &lt; x &lt; 16.'},
-  {t:'num',q:'log<sub>3</sub> x ≥ 2 ⟺ x ≥ k. Quanto vale k?',ans:9,exp:'2 = log<sub>3</sub> 9; base &gt; 1 ⟹ x ≥ 9.'},
-  {t:'mc',q:'log<sub>1/2</sub> x &gt; 1 equivale a:',opts:['0 &lt; x &lt; 1/2','x &gt; 1/2','x &gt; 2','0 &lt; x &lt; 2'],ans:0,exp:'1 = log<sub>1/2</sub>(1/2); base &lt; 1 inverte: x &lt; 1/2, con x &gt; 0.'},
-  {t:'num',q:'log<sub>2</sub>(x − 1) &gt; 3 ⟺ x &gt; k. Quanto vale k?',ans:9,exp:'3 = log<sub>2</sub> 8 ⟹ x − 1 &gt; 8 ⟹ x &gt; 9.'},
-  {t:'num',q:'log x &gt; 2 (base 10) ⟺ x &gt; k. Quanto vale k?',ans:100,exp:'2 = log 100; base &gt; 1 ⟹ x &gt; 100.'},
-  {t:'mc',q:'Il dominio di log<sub>2</sub>(x − 3) richiede:',opts:['x &gt; 3','x &gt; 0','x ≠ 3','x &lt; 3'],ans:0,exp:'L\'argomento x − 3 deve essere &gt; 0.'},
-  {t:'num',q:'log<sub>2</sub> x ≤ 0 ⟺ 0 &lt; x ≤ k. Quanto vale k?',ans:1,exp:'0 = log<sub>2</sub> 1; base &gt; 1 ⟹ x ≤ 1; con C.E. 0 &lt; x ≤ 1.'},
-  {t:'num',q:'log<sub>3</sub> x &gt; 0 ⟺ x &gt; k. Quanto vale k?',ans:1,exp:'0 = log<sub>3</sub> 1 ⟹ x &gt; 1.'},
-  {t:'mc',q:'log<sub>2</sub> x &lt; 0 equivale a:',opts:['0 &lt; x &lt; 1','x &gt; 1','x &lt; 1','x &gt; 0'],ans:0,exp:'0 = log<sub>2</sub> 1; base &gt; 1 ⟹ x &lt; 1; con C.E. 0 &lt; x &lt; 1.'},
-  {t:'num',q:'log<sub>1/2</sub> x &lt; 2 ⟺ x &gt; k. Quanto vale k?',ans:0.25,tol:0.01,exp:'2 = log<sub>1/2</sub>(1/4); base &lt; 1 inverte: x &gt; 1/4 = 0.25.'},
-  {t:'num',q:'log<sub>2</sub>(2x) &gt; 3 ⟺ x &gt; k. Quanto vale k?',ans:4,exp:'3 = log<sub>2</sub> 8 ⟹ 2x &gt; 8 ⟹ x &gt; 4.'},
-  {t:'num',q:'log<sub>5</sub> x ≥ 1 ⟺ x ≥ k. Quanto vale k?',ans:5,exp:'1 = log<sub>5</sub> 5 ⟹ x ≥ 5.'},
-  {t:'num',q:'log<sub>3</sub>(x + 1) ≤ 2 ⟺ −1 &lt; x ≤ k. Quanto vale k?',ans:8,exp:'2 = log<sub>3</sub> 9 ⟹ x + 1 ≤ 9 ⟹ x ≤ 8; con C.E. x &gt; −1.'},
-  {t:'mc',q:'Perché alcune soluzioni di una disequazione logaritmica si scartano?',opts:['non rispettano le C.E. (argomento ≤ 0)','sono troppo grandi','la base è negativa','non si scartano mai'],ans:0,exp:'Vanno tenute solo le x che rendono positivi tutti gli argomenti.'},
-  {t:'num',q:'log x &lt; 3 (base 10) ⟺ 0 &lt; x &lt; k. Quanto vale k?',ans:1000,exp:'3 = log 1000; base &gt; 1 ⟹ x &lt; 1000; con C.E. 0 &lt; x &lt; 1000.'},
-  {t:'num',q:'log<sub>4</sub> x = 1 è il confine di log<sub>4</sub> x &gt; 1 ⟺ x &gt; k. Quanto vale k?',ans:4,exp:'1 = log<sub>4</sub> 4 ⟹ x &gt; 4.'}
+  {t:"mc",q:"Prima di risolvere una disequazione logaritmica si impongono le C.E., cioè:",opts:["ogni argomento ≠ 0","ogni argomento &gt; 0","la base &gt; 1","x &gt; 1"],ans:1,exp:"Gli argomenti dei logaritmi devono essere strettamente positivi."},
+  {t:"mc",q:"Con a &gt; 1, da log<sub>a</sub>f &gt; log<sub>a</sub>g (con f, g &gt; 0) segue:",opts:["f &lt; g","f &gt; g","f = g","f &gt; 0"],ans:1,exp:"Base &gt; 1: logaritmo crescente, verso invariato."},
+  {t:"mc",q:"Con 0 &lt; a &lt; 1, da log<sub>a</sub>f &gt; log<sub>a</sub>g segue:",opts:["f &gt; g","f = g","nessuna soluzione","f &lt; g"],ans:3,exp:"Base &lt; 1: logaritmo decrescente, verso invertito."},
+  {t:"num",q:"log<sub>2</sub> x &gt; 3 ⟺ x &gt; k. Quanto vale k?",ans:8,exp:"3 = log<sub>2</sub> 8; base &gt; 1 ⟹ x &gt; 8 (con x &gt; 0)."},
+  {t:"num",q:"log<sub>2</sub> x &lt; 4 ⟺ 0 &lt; x &lt; k. Quanto vale k?",ans:16,exp:"4 = log<sub>2</sub> 16; base &gt; 1 ⟹ x &lt; 16; con C.E. 0 &lt; x &lt; 16."},
+  {t:"num",q:"log<sub>3</sub> x ≥ 2 ⟺ x ≥ k. Quanto vale k?",ans:9,exp:"2 = log<sub>3</sub> 9; base &gt; 1 ⟹ x ≥ 9."},
+  {t:"mc",q:"log<sub>1/2</sub> x &gt; 1 equivale a:",opts:["x &gt; 1/2","x &gt; 2","0 &lt; x &lt; 1/2","0 &lt; x &lt; 2"],ans:2,exp:"1 = log<sub>1/2</sub>(1/2); base &lt; 1 inverte: x &lt; 1/2, con x &gt; 0."},
+  {t:"num",q:"log<sub>2</sub>(x − 1) &gt; 3 ⟺ x &gt; k. Quanto vale k?",ans:9,exp:"3 = log<sub>2</sub> 8 ⟹ x − 1 &gt; 8 ⟹ x &gt; 9."},
+  {t:"num",q:"log x &gt; 2 (base 10) ⟺ x &gt; k. Quanto vale k?",ans:100,exp:"2 = log 100; base &gt; 1 ⟹ x &gt; 100."},
+  {t:"mc",q:"Il dominio di log<sub>2</sub>(x − 3) richiede:",opts:["x &gt; 3","x &gt; 0","x ≠ 3","x &lt; 3"],ans:0,exp:"L'argomento x − 3 deve essere &gt; 0."},
+  {t:"num",q:"log<sub>2</sub> x ≤ 0 ⟺ 0 &lt; x ≤ k. Quanto vale k?",ans:1,exp:"0 = log<sub>2</sub> 1; base &gt; 1 ⟹ x ≤ 1; con C.E. 0 &lt; x ≤ 1."},
+  {t:"num",q:"log<sub>3</sub> x &gt; 0 ⟺ x &gt; k. Quanto vale k?",ans:1,exp:"0 = log<sub>3</sub> 1 ⟹ x &gt; 1."},
+  {t:"mc",q:"log<sub>2</sub> x &lt; 0 equivale a:",opts:["x &gt; 1","x &lt; 1","0 &lt; x &lt; 1","x &gt; 0"],ans:2,exp:"0 = log<sub>2</sub> 1; base &gt; 1 ⟹ x &lt; 1; con C.E. 0 &lt; x &lt; 1."},
+  {t:"num",q:"log<sub>1/2</sub> x &lt; 2 ⟺ x &gt; k. Quanto vale k?",ans:0.25,tol:0.01,exp:"2 = log<sub>1/2</sub>(1/4); base &lt; 1 inverte: x &gt; 1/4 = 0.25."},
+  {t:"num",q:"log<sub>2</sub>(2x) &gt; 3 ⟺ x &gt; k. Quanto vale k?",ans:4,exp:"3 = log<sub>2</sub> 8 ⟹ 2x &gt; 8 ⟹ x &gt; 4."},
+  {t:"num",q:"log<sub>5</sub> x ≥ 1 ⟺ x ≥ k. Quanto vale k?",ans:5,exp:"1 = log<sub>5</sub> 5 ⟹ x ≥ 5."},
+  {t:"num",q:"log<sub>3</sub>(x + 1) ≤ 2 ⟺ −1 &lt; x ≤ k. Quanto vale k?",ans:8,exp:"2 = log<sub>3</sub> 9 ⟹ x + 1 ≤ 9 ⟹ x ≤ 8; con C.E. x &gt; −1."},
+  {t:"mc",q:"Perché alcune soluzioni di una disequazione logaritmica si scartano?",opts:["non rispettano le C.E. (argomento ≤ 0)","sono troppo grandi","la base è negativa","non si scartano mai"],ans:0,exp:"Vanno tenute solo le x che rendono positivi tutti gli argomenti."},
+  {t:"num",q:"log x &lt; 3 (base 10) ⟺ 0 &lt; x &lt; k. Quanto vale k?",ans:1000,exp:"3 = log 1000; base &gt; 1 ⟹ x &lt; 1000; con C.E. 0 &lt; x &lt; 1000."},
+  {t:"num",q:"log<sub>4</sub> x = 1 è il confine di log<sub>4</sub> x &gt; 1 ⟺ x &gt; k. Quanto vale k?",ans:4,exp:"1 = log<sub>4</sub> 4 ⟹ x &gt; 4."}
 ]
 };
 
@@ -979,14 +988,14 @@ function renderQuiz(s){
   else if(st.done){
     const pct=st.score/total;
     const mi=pct<=.4?0:pct<=.6?1:pct<=.8?2:pct<1?3:4;
-    const icons=['😕','🙂','😊','🎉','🏆'];
+    const icons=['','','😊','🎉','🏆'];
     const msgs=['Da rivedere — rileggi la teoria e riprova.','Sufficiente — qualche lacuna da colmare.','Buono — ci sei quasi!','Ottimo risultato!','Perfetto — nessun errore!'];
     body=`<div class="quiz-done">
       <span class="quiz-score-big">${icons[mi]} ${st.score}/${total}</span>
       <p class="quiz-msg">${msgs[mi]}</p>
       <div class="quiz-actions">
         <button class="quiz-review alt" onclick="reviewQuiz('${s}')">🔍 Rivedi risposte</button>
-        <button class="quiz-restart" onclick="restartQuiz('${s}')">🔄 Ricomincia</button>
+        <button class="quiz-restart" onclick="restartQuiz('${s}')">Ricomincia</button>
       </div></div>`;
   } else {
     const q=qs[st.idx], pct=st.idx/total*100;
@@ -995,7 +1004,7 @@ function renderQuiz(s){
     if(q.t==='num'){
       interactive=`<div class="quiz-numrow">
         <input class="quiz-num" id="qnum-${s}" inputmode="text" placeholder="Risultato…" onkeydown="if(event.key==='Enter')answerNum('${s}')">
-        <button class="quiz-check" id="qchk-${s}" onclick="answerNum('${s}')">✓ Verifica</button>
+        <button class="quiz-check" id="qchk-${s}" onclick="answerNum('${s}')">Verifica</button>
       </div>`;
     } else {
       interactive=`<div class="quiz-opts">${q.opts.map((o,i)=>`<button class="quiz-btn" id="qb-${s}-${i}" onclick="answerMc('${s}',${i})">${'ABCD'[i]}) ${o}</button>`).join('')}</div>`;
@@ -1011,12 +1020,12 @@ function renderQuiz(s){
       <div class="quiz-exp" id="qexp-${s}" style="display:none"></div>
       <button class="quiz-next" id="qnxt-${s}" style="display:none" onclick="nextQuiz('${s}')">${st.idx+1<total?'Prossima domanda →':'Vedi il risultato finale →'}</button>`;
   }
-  el.innerHTML=`<div class="card"><h2>🧩 Quiz</h2>${body}</div>`;
+  el.innerHTML=`<div class="card"><h2>Quiz</h2>${body}</div>`;
 }
 function feedback(s,correct,exp){
   const ex=document.getElementById('qexp-'+s);
   ex.style.display=''; ex.className=`quiz-exp ${correct?'ok':'no'}`;
-  ex.innerHTML=`<strong>${correct?'✓ Corretto!':'✗ Sbagliato.'}</strong> ${exp}`;
+  ex.innerHTML=`<strong>${correct?'Corretto!':'Sbagliato.'}</strong> ${exp}`;
   document.getElementById('qnxt-'+s).style.display='';
 }
 function answerMc(s,chosen){
@@ -1035,7 +1044,7 @@ function answerMc(s,chosen){
 function answerNum(s){
   const st=qz[s]; if(st.answered) return;
   const inp=document.getElementById('qnum-'+s); const v=parseNum(inp.value);
-  if(isNaN(v)){ inp.focus(); inp.style.borderColor='#c62828'; return; }
+  if(isNaN(v)){ inp.focus(); inp.style.borderColor='#ef6c00'; return; }
   st.answered=true;
   const q=QUIZ[s][st.idx], tol=q.tol||1e-6, correct=Math.abs(v-q.ans)<=tol;
   if(correct) st.score++;
@@ -1063,18 +1072,19 @@ function renderReview(s){
     ${items}
     <div class="quiz-actions" style="margin-top:.8rem">
       <button class="quiz-review alt" onclick="closeReview('${s}')">← Torna al risultato</button>
-      <button class="quiz-restart" onclick="restartQuiz('${s}')">🔄 Ricomincia</button>
+      <button class="quiz-restart" onclick="restartQuiz('${s}')">Ricomincia</button>
     </div>`;
 }
 
 /* ============ TEMA ============ */
+var THEME_SUN="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='4'/><path d='M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4'/></svg>",THEME_MOON="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z'/></svg>";
 function toggleTheme(){
   const html=document.documentElement;
   const next=html.getAttribute('data-theme')==='dark'?'light':'dark';
   html.setAttribute('data-theme',next);
   try{localStorage.setItem('theme',next);}catch(e){}
   const btn=document.getElementById('theme-btn');
-  if(btn) btn.textContent=next==='dark'?'☀️':'🌙';
+  if(btn) btn.innerHTML=next==='dark'?THEME_SUN:THEME_MOON;
   refreshColors();
   const cur=[...scenes].find(s=>s.classList.contains('active'));
   if(cur&&cur.id!=='home'){ const id=cur.id,sub=activeSub[id]||'teoria'; renderFor(id,sub); }
@@ -1083,7 +1093,7 @@ function toggleTheme(){
 /* ============ INIT ============ */
 QSEC.forEach(renderQuiz);
 Object.keys(PV).forEach(renderProva);
-(function(){const btn=document.getElementById('theme-btn');if(btn)btn.textContent=document.documentElement.getAttribute('data-theme')==='dark'?'☀️':'🌙';})();
+(function(){const btn=document.getElementById('theme-btn');if(btn)btn.innerHTML=document.documentElement.getAttribute('data-theme')==='dark'?THEME_SUN:THEME_MOON;})();
 </script>
 </body>
 </html>

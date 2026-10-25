@@ -208,6 +208,7 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
   <button data-tab="eqlog" role="tab" aria-selected="false">Eq. logaritmiche</button>
   <button data-tab="disesp" role="tab" aria-selected="false">Diseq. esponenziali</button>
   <button data-tab="dislog" role="tab" aria-selected="false">Diseq. logaritmiche</button>
+  <button data-tab="finale" role="tab" aria-selected="false">🏁 Quiz finale</button>
 </nav>
 <main>
 
@@ -506,6 +507,15 @@ table.tbl th{background:#efeafd;color:var(--primary-d)}
   <div class="subpanel" data-sub="quiz"><div id="qz-dislog"></div></div>
 </section>
 
+<!-- =================== QUIZ FINALE =================== -->
+<section class="scene" id="finale">
+  <div class="card" style="margin-bottom:.7rem">
+    <h2>🏁 Quiz finale</h2>
+    <p>20 domande scelte casualmente da tutti gli argomenti — esponenziali, logaritmi, equazioni e disequazioni. Ogni volta che ricominciaci viene estratto un nuovo mazzo.</p>
+  </div>
+  <div id="qz-finale"></div>
+</section>
+
 </main>
 
 <script>
@@ -699,7 +709,8 @@ const RENDERERS={
   eqesp:{teoria:rdEqesp, sim:smEqesp},
   eqlog:{teoria:rdEqlog, sim:smEqlog},
   disesp:{teoria:rdDisesp, sim:smDisesp},
-  dislog:{teoria:rdDislog, sim:smDislog}
+  dislog:{teoria:rdDislog, sim:smDislog},
+  finale:{quiz:()=>renderQuiz('finale')}
 };
 
 /* ============ ANIMAZIONE ============ */
@@ -728,7 +739,7 @@ function stopAnim(){
 /* ============ NAVIGAZIONE ============ */
 const tabs=document.querySelectorAll('nav.main button');
 const scenes=document.querySelectorAll('section.scene');
-const activeSub={basi:'teoria',eqesp:'teoria',eqlog:'teoria',disesp:'teoria',dislog:'teoria'};
+const activeSub={basi:'teoria',eqesp:'teoria',eqlog:'teoria',disesp:'teoria',dislog:'teoria',finale:'quiz'};
 function renderFor(sec,sub){ const r=RENDERERS[sec]&&RENDERERS[sec][sub]; if(r) r(); }
 function show(id){
   stopAnim();
@@ -885,6 +896,26 @@ basi:[
   {t:"mc",q:"Il dominio di y = log<sub>a</sub>x è:",opts:["ℝ","(0, +∞)","(−∞, 0)","ℝ ∖ {0}"],ans:1,exp:"L'argomento del logaritmo deve essere &gt; 0."},
   {t:"num",q:"Quanto vale  2<sup>log<sub>2</sub> 7</sup> ?",ans:7,exp:"a<sup>x</sup> e log<sub>a</sub> sono inverse: a<sup>log<sub>a</sub> b</sup> = b."},
   {t:"num",q:"Quanto vale  log<sub>2</sub> (2<sup>5</sup>) ?",ans:5,exp:"log<sub>a</sub>(a<sup>n</sup>) = n."}
+  ,{t:"mc",q:"La formula del cambio di base afferma che log<sub>a</sub>b =:",opts:["log b / log a","log a / log b","log(b−a)","b / log a"],ans:0,exp:"log<sub>a</sub>b = log b / log a in qualsiasi base comune."}
+  ,{t:"num",q:"Calcola log<sub>4</sub> 8.",ans:1.5,tol:0.01,exp:"4<sup>x</sup>=8 ⟹ 2<sup>2x</sup>=2<sup>3</sup> ⟹ 2x=3 ⟹ x=3/2."}
+  ,{t:"num",q:"Calcola log<sub>8</sub> 2.",ans:0.333,tol:0.01,exp:"2<sup>3x</sup>=2 ⟹ 3x=1 ⟹ x=1/3."}
+  ,{t:"num",q:"Calcola log<sub>9</sub> 3.",ans:0.5,tol:0.01,exp:"3<sup>2x</sup>=3 ⟹ 2x=1 ⟹ x=1/2."}
+  ,{t:"mc",q:"La proprietà log<sub>a</sub>(x<sup>1/2</sup>) = ½·log<sub>a</sub>x deriva da:",opts:["logaritmo di un prodotto","logaritmo di un quoziente","esponente dell'argomento come fattore","cambio di base"],ans:2,exp:"log<sub>a</sub>(x<sup>n</sup>) = n·log<sub>a</sub>x con n = 1/2."}
+  ,{t:"num",q:"Semplifica log<sub>2</sub> 3 + log<sub>2</sub> 8 − log<sub>2</sub> 12.",ans:1,exp:"log<sub>2</sub>(3·8/12)=log<sub>2</sub> 2=1."}
+  ,{t:"num",q:"Semplifica log<sub>5</sub>(5<sup>7</sup>).",ans:7,exp:"log<sub>a</sub>(a<sup>n</sup>) = n."}
+  ,{t:"num",q:"Calcola log<sub>4</sub> 64.",ans:3,exp:"64 = 4<sup>3</sup>."}
+  ,{t:"mc",q:"Il grafico di y = log<sub>a</sub>x (con a &gt; 1) interseca l'asse x in:",opts:["x = 0","x = 1","x = a","non lo interseca"],ans:1,exp:"log<sub>a</sub> 1 = 0 per ogni base a &gt; 0, a ≠ 1."}
+  ,{t:"num",q:"Calcola log<sub>1/3</sub> 9.",ans:-2,exp:"(1/3)<sup>x</sup>=9 ⟹ 3<sup>−x</sup>=3<sup>2</sup> ⟹ x=−2."}
+  ,{t:"num",q:"Calcola log<sub>100</sub> 10.",ans:0.5,tol:0.01,exp:"10 = 100<sup>1/2</sup> ⟹ log<sub>100</sub> 10 = 1/2."}
+  ,{t:"mc",q:"Se a &gt; 1 e b &gt; a, allora log<sub>a</sub>b è:",opts:["uguale a 1","minore di 1","negativo","maggiore di 1"],ans:3,exp:"b &gt; a<sup>1</sup> implica log<sub>a</sub>b &gt; 1."}
+  ,{t:"num",q:"Quanto vale log<sub>3</sub>(3<sup>−5</sup>)?",ans:-5,exp:"log<sub>a</sub>(a<sup>n</sup>) = n."}
+  ,{t:"num",q:"Quanto vale  log<sub>2</sub> 3 · log<sub>3</sub> 4  (regola della catena)?",ans:2,exp:"log<sub>2</sub>3 · log<sub>3</sub>4 = log<sub>2</sub>4 = 2."}
+  ,{t:"mc",q:"Tra le seguenti, l'identità corretta è:",opts:["log(2+5) = log 2 + log 5","log 2 + log 5 = 1","log 2 = 2·log 1","log 10 = log 5 − log 2"],ans:1,exp:"log(2·5) = log 10 = 1."}
+  ,{t:"num",q:"Quanto vale  log<sub>2</sub> √8 ?",ans:1.5,tol:0.01,exp:"√8=2<sup>3/2</sup>, quindi log<sub>2</sub>(2<sup>3/2</sup>)=3/2."}
+  ,{t:"num",q:"Per quale x risulta  log<sub>3</sub>(x+1) = 0 ?",ans:0,exp:"x+1=3<sup>0</sup>=1 ⟹ x=0."}
+  ,{t:"mc",q:"log<sub>a</sub> 1 è uguale a:",opts:["1","a","0","indefinito"],ans:2,exp:"a<sup>0</sup>=1 per ogni a, quindi log<sub>a</sub>1=0."}
+  ,{t:"num",q:"Semplifica log<sub>2</sub>(32·4).",ans:7,exp:"32·4=128=2<sup>7</sup>."}
+  ,{t:"num",q:"Calcola log<sub>4</sub>(1/16).",ans:-2,exp:"1/16=4<sup>−2</sup>."}
 ],
 eqesp:[
   {t:"mc",q:"L'equazione 2<sup>x</sup> = 2<sup>5</sup> equivale a:",opts:["x = 2","x = 10","x = 5","x = 32"],ans:2,exp:"Stessa base ⟹ esponenti uguali."},
@@ -907,6 +938,26 @@ eqesp:[
   {t:"num",q:"Risolvi 10<sup>x</sup> = 1000.",ans:3,exp:"1000 = 10<sup>3</sup> ⟹ x = 3."},
   {t:"num",q:"Risolvi (1/3)<sup>x</sup> = 9.",ans:-2,exp:"3<sup>−x</sup> = 3<sup>2</sup> ⟹ −x = 2 ⟹ x = −2."},
   {t:"mc",q:"L'equazione 2<sup>x</sup> = −4 ha:",opts:["nessuna soluzione","x = 2","x = −2","x = log<sub>2</sub>4"],ans:0,exp:"Un'esponenziale non assume mai valori negativi."}
+  ,{t:"num",q:"Risolvi 2<sup>x</sup> = √2.",ans:0.5,tol:0.01,exp:"√2=2<sup>1/2</sup> ⟹ x=1/2."}
+  ,{t:"num",q:"Risolvi 4<sup>x+1</sup> = 64.",ans:2,exp:"64=4<sup>3</sup> ⟹ x+1=3 ⟹ x=2."}
+  ,{t:"num",q:"Risolvi 8<sup>x</sup> = 4.",ans:0.667,tol:0.01,exp:"2<sup>3x</sup>=2<sup>2</sup> ⟹ 3x=2 ⟹ x=2/3."}
+  ,{t:"num",q:"Risolvi 25<sup>x</sup> = 5.",ans:0.5,tol:0.01,exp:"5<sup>2x</sup>=5<sup>1</sup> ⟹ 2x=1 ⟹ x=1/2."}
+  ,{t:"mc",q:"9<sup>x</sup> − 10·3<sup>x</sup> + 9 = 0: con t = 3<sup>x</sup> si ottiene:",opts:["t² + 10t + 9 = 0","t² − 10t + 9 = 0","t² − 9t + 10 = 0","t + 10t − 9 = 0"],ans:1,exp:"9<sup>x</sup>=(3<sup>x</sup>)²=t²; l'equazione diventa t²−10t+9=0."}
+  ,{t:"num",q:"9<sup>x</sup> − 10·3<sup>x</sup> + 9 = 0: inserisci la soluzione minore.",ans:0,exp:"t=1⟹x=0; t=9=3²⟹x=2. Minore: 0."}
+  ,{t:"num",q:"Risolvi 2<sup>3x</sup> = 64.",ans:2,exp:"64=2<sup>6</sup> ⟹ 3x=6 ⟹ x=2."}
+  ,{t:"num",q:"Risolvi (1/4)<sup>x</sup> = 8.",ans:-1.5,tol:0.01,exp:"2<sup>−2x</sup>=2<sup>3</sup> ⟹ −2x=3 ⟹ x=−3/2."}
+  ,{t:"num",q:"Risolvi 2<sup>x²−x</sup> = 1  (inserisci la soluzione maggiore).",ans:1,exp:"1=2<sup>0</sup> ⟹ x²−x=0 ⟹ x=0 ∨ x=1; maggiore: 1."}
+  ,{t:"num",q:"Risolvi 3<sup>2x+1</sup> = 27.",ans:1,exp:"27=3<sup>3</sup> ⟹ 2x+1=3 ⟹ x=1."}
+  ,{t:"mc",q:"2<sup>x</sup> = 5 si può riscrivere come:",opts:["x = log 5 / log 2","x = log 2 / log 5","x = 5/2","x = log(5−2)"],ans:0,exp:"x = log<sub>2</sub>5 = log 5 / log 2 (cambio di base)."}
+  ,{t:"num",q:"Risolvi 2<sup>2x+3</sup> = 16.",ans:0.5,tol:0.01,exp:"16=2<sup>4</sup> ⟹ 2x+3=4 ⟹ x=1/2."}
+  ,{t:"num",q:"Risolvi 5<sup>x−1</sup> = 25.",ans:3,exp:"25=5<sup>2</sup> ⟹ x−1=2 ⟹ x=3."}
+  ,{t:"num",q:"Risolvi e<sup>x</sup> = e<sup>2x−1</sup>  (trova x).",ans:1,exp:"x=2x−1 ⟹ −x=−1 ⟹ x=1."}
+  ,{t:"num",q:"Risolvi 16<sup>x</sup> = 8.",ans:0.75,tol:0.01,exp:"2<sup>4x</sup>=2<sup>3</sup> ⟹ 4x=3 ⟹ x=3/4."}
+  ,{t:"mc",q:"4<sup>x</sup> + 2<sup>x</sup> − 6 = 0: con t = 2<sup>x</sup> si ha:",opts:["t²−t−6=0","t²+t+6=0","t²+t−6=0","t²−t+6=0"],ans:2,exp:"4<sup>x</sup>=(2<sup>x</sup>)²=t²; l'equazione diventa t²+t−6=0."}
+  ,{t:"num",q:"4<sup>x</sup> + 2<sup>x</sup> − 6 = 0: la soluzione accettabile è x =",ans:1,exp:"t²+t−6=0 ⟹ t=2 ∨ t=−3; t=−3 scartata; 2<sup>x</sup>=2 ⟹ x=1."}
+  ,{t:"num",q:"Risolvi 3<sup>x+1</sup> = 3<sup>3x−3</sup>.",ans:2,exp:"x+1=3x−3 ⟹ 4=2x ⟹ x=2."}
+  ,{t:"mc",q:"L'equazione e<sup>x</sup> = e<sup>2x−1</sup> equivale a:",opts:["x=2x","x=2x−1","2x=2x−1","nessuna delle precedenti"],ans:1,exp:"Stessa base e ⟹ x=2x−1."}
+  ,{t:"num",q:"Risolvi 4<sup>x</sup> − 5·2<sup>x</sup> + 4 = 0: inserisci la soluzione minore.",ans:0,exp:"t=2<sup>x</sup>: t²−5t+4=0 ⟹ t=1,4 ⟹ x=0,2. Minore: 0."}
 ],
 eqlog:[
   {t:"mc",q:"L'equazione log<sub>a</sub>f(x) = b (con la definizione) equivale a:",opts:["f(x) = b·a","f(x) = b<sup>a</sup>","f(x) = a<sup>b</sup>","f(x) = a/b"],ans:2,exp:"Per definizione di logaritmo."},
@@ -929,6 +980,26 @@ eqlog:[
   {t:"num",q:"Risolvi log<sub>2</sub> x = −1.",ans:0.5,tol:0.01,exp:"x = 2<sup>−1</sup> = 1/2 = 0.5."},
   {t:"num",q:"Risolvi log<sub>5</sub> x = 2.",ans:25,exp:"x = 5<sup>2</sup> = 25."},
   {t:"num",q:"log(x) + log(x − 3) = 1 (base 10): inserisci la soluzione accettabile.",ans:5,exp:"x(x−3)=10 ⟹ x<sup>2</sup>−3x−10=0 ⟹ x=5 ∨ x=−2; accettabile x=5."}
+  ,{t:"num",q:"Risolvi log<sub>2</sub>(x+4) = 4.",ans:12,exp:"x+4=2<sup>4</sup>=16 ⟹ x=12."}
+  ,{t:"num",q:"Risolvi log<sub>3</sub>(x−2) = 3.",ans:29,exp:"x−2=3<sup>3</sup>=27 ⟹ x=29."}
+  ,{t:"num",q:"Risolvi log<sub>2</sub>(x²) = 6  (inserisci la soluzione positiva).",ans:8,exp:"x²=2<sup>6</sup>=64 ⟹ x=8 (accettabile)."}
+  ,{t:"mc",q:"Nell'equazione log<sub>2</sub>(x−1)+log<sub>2</sub>(x+1)=3, la C.E. più restrittiva richiede:",opts:["x&gt;−1","x&gt;0","x&gt;1","x≠1"],ans:2,exp:"x−1&gt;0 ⟹ x&gt;1 è la condizione più restrittiva."}
+  ,{t:"num",q:"log<sub>2</sub>(x−1)+log<sub>2</sub>(x+1) = 3: trova x.",ans:3,exp:"(x−1)(x+1)=8 ⟹ x²=9 ⟹ x=3 (x=−3 scartata)."}
+  ,{t:"num",q:"Risolvi 3·log<sub>2</sub> x = 9.",ans:8,exp:"log<sub>2</sub>x=3 ⟹ x=8."}
+  ,{t:"num",q:"Risolvi log<sub>2</sub> x + log<sub>2</sub>(x+2) = 3.",ans:2,exp:"x(x+2)=8 ⟹ x²+2x−8=0 ⟹ x=2 (x=−4 scartata)."}
+  ,{t:"mc",q:"Il numero di soluzioni accettabili di log<sub>2</sub>(x²) = 2 è:",opts:["0","1","2","infinite"],ans:2,exp:"x²=4 ⟹ x=±2; entrambe rendono x²=4&gt;0: 2 soluzioni."}
+  ,{t:"num",q:"Risolvi log x + log(x−3) = 1  (base 10).",ans:5,exp:"x(x−3)=10 ⟹ x²−3x−10=0 ⟹ x=5 (x=−2 scartata)."}
+  ,{t:"num",q:"Risolvi log<sub>3</sub>(x+6) + log<sub>3</sub> x = 3.",ans:3,exp:"x(x+6)=27 ⟹ x²+6x−27=0 ⟹ x=3 (x=−9 scartata)."}
+  ,{t:"mc",q:"Dopo aver risolto un'equazione logaritmica con la proprietà di uguaglianza degli argomenti, occorre:",opts:["nessun controllo","verificare che le soluzioni rispettino le C.E.","applicare il cambio di base","elevare entrambi i membri alla stessa potenza"],ans:1,exp:"Le soluzioni che rendono un argomento ≤ 0 vanno scartate."}
+  ,{t:"num",q:"Risolvi log<sub>5</sub>(2x−1) = 2.",ans:13,exp:"2x−1=25 ⟹ x=13."}
+  ,{t:"num",q:"Risolvi log<sub>2</sub>(4x) = 5.",ans:8,exp:"4x=32 ⟹ x=8."}
+  ,{t:"num",q:"Risolvi log<sub>4</sub>(2x) = 2.",ans:8,exp:"2x=16 ⟹ x=8."}
+  ,{t:"num",q:"Risolvi log<sub>2</sub>(x+1) − log<sub>2</sub>(x−1) = 1.",ans:3,exp:"(x+1)/(x−1)=2 ⟹ x+1=2x−2 ⟹ x=3."}
+  ,{t:"mc",q:"L'equazione log x = −1 (base 10) ha soluzione:",opts:["x = −10","x = 1/10","x = 10","nessuna soluzione"],ans:1,exp:"x=10<sup>−1</sup>=0.1."}
+  ,{t:"num",q:"Risolvi log(x+5) = log(4x−1)  (base 10).",ans:2,exp:"x+5=4x−1 ⟹ x=2; C.E.: 7&gt;0 ✓."}
+  ,{t:"num",q:"Risolvi log<sub>3</sub>(x+6) = log<sub>3</sub>(2x+3).",ans:3,exp:"x+6=2x+3 ⟹ x=3; C.E.: 9&gt;0 ✓."}
+  ,{t:"mc",q:"log<sub>2</sub>(x−3) = log<sub>2</sub>(2x−7): la soluzione è:",opts:["x = 4","x = −4","x = 4 e x = −4","nessuna"],ans:0,exp:"x−3=2x−7 ⟹ x=4; C.E.: 1&gt;0 ✓."}
+  ,{t:"num",q:"Risolvi log<sub>2</sub>(x+3) + log<sub>2</sub>(x−1) = 5.",ans:5,exp:"(x+3)(x−1)=32 ⟹ x²+2x−35=0 ⟹ x=5 (x=−7 scartata)."}
 ],
 disesp:[
   {t:"mc",q:"Con a &gt; 1, da a<sup>f</sup> &gt; a<sup>g</sup> segue:",opts:["f &gt; g","f &lt; g","f = g","dipende da g"],ans:0,exp:"Base &gt; 1: la funzione è crescente, il verso si mantiene."},
@@ -951,6 +1022,26 @@ disesp:[
   {t:"mc",q:"La soluzione di 2<sup>x</sup> &gt; 0 è:",opts:["ogni x reale","x &gt; 0","x &gt; 1","nessuna"],ans:0,exp:"L'esponenziale è sempre positiva."},
   {t:"num",q:"9<sup>x</sup> &gt; 3 ⟺ x &gt; k. Quanto vale k?",ans:0.5,tol:0.01,exp:"3<sup>2x</sup> &gt; 3<sup>1</sup> ⟹ 2x &gt; 1 ⟹ x &gt; 0.5."},
   {t:"mc",q:"(2/3)<sup>x</sup> &gt; 1 equivale a:",opts:["x &gt; 0","x &gt; 1","x &lt; 1","x &lt; 0"],ans:3,exp:"1 = (2/3)<sup>0</sup>; base &lt; 1 inverte: x &lt; 0."}
+  ,{t:"num",q:"2<sup>x+3</sup> &lt; 64 ⟺ x &lt; k. Quanto vale k?",ans:3,exp:"64=2<sup>6</sup> ⟹ x+3&lt;6 ⟹ x&lt;3."}
+  ,{t:"num",q:"(1/2)<sup>x+1</sup> ≥ 4 ⟺ x ≤ k. Quanto vale k?",ans:-3,exp:"2<sup>−(x+1)</sup>≥2<sup>2</sup> ⟹ −x−1≥2 ⟹ x≤−3."}
+  ,{t:"mc",q:"5<sup>x²</sup> &gt; 5 (base &gt; 1) equivale a:",opts:["x² &gt; 1, cioè |x| &gt; 1","x &gt; 1","x² &lt; 1","x &gt; 0"],ans:0,exp:"Base&gt;1 mantiene: x²&gt;1 ⟹ |x|&gt;1."}
+  ,{t:"num",q:"3<sup>x</sup> ≤ 1/9 ⟺ x ≤ k. Quanto vale k?",ans:-2,exp:"1/9=3<sup>−2</sup>; base&gt;1 ⟹ x≤−2."}
+  ,{t:"num",q:"4<sup>x</sup> &gt; 8 ⟺ x &gt; k. Quanto vale k?",ans:1.5,tol:0.01,exp:"2<sup>2x</sup>&gt;2<sup>3</sup> ⟹ 2x&gt;3 ⟹ x&gt;3/2."}
+  ,{t:"mc",q:"9<sup>x</sup> &lt; 27 equivale a:",opts:["x&lt;3/2","x&lt;3","x&lt;1","x&gt;3/2"],ans:0,exp:"3<sup>2x</sup>&lt;3<sup>3</sup> ⟹ 2x&lt;3 ⟹ x&lt;3/2."}
+  ,{t:"num",q:"2<sup>x</sup> − 2 &gt; 0 ⟺ x &gt; k. Quanto vale k?",ans:1,exp:"2<sup>x</sup>&gt;2<sup>1</sup>; base&gt;1 ⟹ x&gt;1."}
+  ,{t:"num",q:"(1/5)<sup>x</sup> &lt; 5 ⟺ x &gt; k. Quanto vale k?",ans:-1,exp:"5<sup>−x</sup>&lt;5<sup>1</sup>; −x&lt;1 ⟹ x&gt;−1."}
+  ,{t:"mc",q:"3<sup>x</sup> &gt; 3<sup>2x−1</sup> equivale a:",opts:["x&lt;1","x&gt;1","x&lt;0","nessuna soluzione"],ans:0,exp:"Base&gt;1 mantiene: x&gt;2x−1 ⟹ 0&gt;x−1 ⟹ x&lt;1."}
+  ,{t:"num",q:"2<sup>3x</sup> &lt; 2<sup>x+4</sup> ⟺ x &lt; k. Quanto vale k?",ans:2,exp:"3x&lt;x+4 ⟹ 2x&lt;4 ⟹ x&lt;2."}
+  ,{t:"mc",q:"(2/3)<sup>x</sup> &lt; (2/3)<sup>3</sup> equivale a:",opts:["x&lt;3","x&gt;3","x=3","nessuna soluzione"],ans:1,exp:"Base 2/3&lt;1 (decrescente): verso invertito ⟹ x&gt;3."}
+  ,{t:"num",q:"5<sup>x+2</sup> ≤ 5<sup>3x</sup> ⟺ x ≥ k. Quanto vale k?",ans:1,exp:"x+2≤3x ⟹ 2≤2x ⟹ x≥1."}
+  ,{t:"num",q:"4<sup>x</sup> &lt; 2 ⟺ x &lt; k. Quanto vale k?",ans:0.5,tol:0.01,exp:"2<sup>2x</sup>&lt;2<sup>1</sup> ⟹ 2x&lt;1 ⟹ x&lt;1/2."}
+  ,{t:"mc",q:"2<sup>x²−4</sup> ≥ 1 equivale a:",opts:["|x| ≥ 2","x ≥ 2","|x| ≤ 2","x² ≤ 4"],ans:0,exp:"1=2<sup>0</sup>; base&gt;1 mantiene: x²−4≥0 ⟹ |x|≥2."}
+  ,{t:"num",q:"3<sup>x</sup>·3<sup>x+1</sup> &gt; 81 ⟺ x &gt; k. Quanto vale k?",ans:1.5,tol:0.01,exp:"3<sup>2x+1</sup>&gt;3<sup>4</sup> ⟹ 2x+1&gt;4 ⟹ x&gt;3/2."}
+  ,{t:"mc",q:"La disequazione (1/4)<sup>x</sup> &lt; 8 equivale a:",opts:["x &gt; −3/2","x &lt; −3/2","x &gt; 3/2","x &lt; 3/2"],ans:0,exp:"2<sup>−2x</sup>&lt;2<sup>3</sup>; −2x&lt;3 ⟹ x&gt;−3/2."}
+  ,{t:"num",q:"(1/4)<sup>x</sup> &lt; 8 ⟺ x &gt; k. Quanto vale k?",ans:-1.5,tol:0.01,exp:"−2x&lt;3 ⟹ x&gt;−3/2."}
+  ,{t:"mc",q:"2<sup>x</sup> &gt; 2<sup>x+1</sup>:",opts:["x &gt; 1","x &gt; 0","non ha soluzioni","ha soluzione per ogni x"],ans:2,exp:"x&gt;x+1 ⟹ 0&gt;1: impossibile."}
+  ,{t:"num",q:"27<sup>x</sup> &gt; 9 ⟺ x &gt; k. Quanto vale k?",ans:0.667,tol:0.01,exp:"3<sup>3x</sup>&gt;3<sup>2</sup> ⟹ 3x&gt;2 ⟹ x&gt;2/3."}
+  ,{t:"num",q:"2<sup>x²</sup> ≤ 16 ⟺ |x| ≤ k. Quanto vale k?",ans:2,exp:"2<sup>x²</sup>≤2<sup>4</sup> ⟹ x²≤4 ⟹ |x|≤2; k=2."}
 ],
 dislog:[
   {t:"mc",q:"Prima di risolvere una disequazione logaritmica si impongono le C.E., cioè:",opts:["ogni argomento ≠ 0","ogni argomento &gt; 0","la base &gt; 1","x &gt; 1"],ans:1,exp:"Gli argomenti dei logaritmi devono essere strettamente positivi."},
@@ -973,16 +1064,40 @@ dislog:[
   {t:"mc",q:"Perché alcune soluzioni di una disequazione logaritmica si scartano?",opts:["non rispettano le C.E. (argomento ≤ 0)","sono troppo grandi","la base è negativa","non si scartano mai"],ans:0,exp:"Vanno tenute solo le x che rendono positivi tutti gli argomenti."},
   {t:"num",q:"log x &lt; 3 (base 10) ⟺ 0 &lt; x &lt; k. Quanto vale k?",ans:1000,exp:"3 = log 1000; base &gt; 1 ⟹ x &lt; 1000; con C.E. 0 &lt; x &lt; 1000."},
   {t:"num",q:"log<sub>4</sub> x = 1 è il confine di log<sub>4</sub> x &gt; 1 ⟺ x &gt; k. Quanto vale k?",ans:4,exp:"1 = log<sub>4</sub> 4 ⟹ x &gt; 4."}
+  ,{t:"num",q:"log<sub>2</sub>(x+3) &gt; 4 ⟺ x &gt; k. Quanto vale k?",ans:13,exp:"x+3&gt;2<sup>4</sup>=16 ⟹ x&gt;13."}
+  ,{t:"num",q:"log<sub>3</sub>(2x) &gt; 2 ⟺ x &gt; k. Quanto vale k?",ans:4.5,tol:0.01,exp:"2x&gt;9 ⟹ x&gt;9/2=4.5."}
+  ,{t:"mc",q:"log<sub>2</sub>(x−1) &gt; log<sub>2</sub> 3 (base&gt;1) equivale a:",opts:["x−1&gt;3","x−1&lt;3","x&gt;3","x&lt;4"],ans:0,exp:"Base&gt;1 mantiene: x−1&gt;3 ⟹ x&gt;4."}
+  ,{t:"num",q:"log<sub>2</sub>(x−1) &gt; log<sub>2</sub> 3 ⟺ x &gt; k.",ans:4,exp:"x−1&gt;3 ⟹ x&gt;4."}
+  ,{t:"mc",q:"log<sub>2</sub>(x²) &gt; log<sub>2</sub> 4 (con x≠0) equivale a:",opts:["|x| &gt; 2","x &gt; 2","x &gt; 4","|x| &gt; 4"],ans:0,exp:"x²&gt;4 ⟹ |x|&gt;2."}
+  ,{t:"num",q:"log<sub>3</sub> x + log<sub>3</sub>(x−6) &gt; 3 ⟺ x &gt; k.",ans:9,exp:"x(x−6)&gt;27; x²−6x−27&gt;0; con C.E. x&gt;6: x&gt;9."}
+  ,{t:"mc",q:"Per log<sub>1/2</sub>(x+1) &lt; −2, la C.E. richiede:",opts:["x &gt; −1","x &gt; 0","x &gt; 1","x &gt; 3"],ans:0,exp:"x+1&gt;0 ⟹ x&gt;−1."}
+  ,{t:"num",q:"log<sub>1/2</sub>(x+1) &lt; −2 ⟺ x &gt; k.",ans:3,exp:"−2=log<sub>1/2</sub> 4; base&lt;1 inverte: x+1&gt;4 ⟹ x&gt;3."}
+  ,{t:"num",q:"log<sub>2</sub>(3x−1) ≥ 3 ⟺ x ≥ k.",ans:3,exp:"3x−1≥8 ⟹ x≥3; C.E.: x&gt;1/3. ✓"}
+  ,{t:"mc",q:"La disequazione log x &lt; 2 (base 10) ha soluzione:",opts:["0 &lt; x &lt; 100","x &lt; 100","x &lt; 10","x &gt; 100"],ans:0,exp:"x&lt;100 con C.E. x&gt;0: 0&lt;x&lt;100."}
+  ,{t:"num",q:"log<sub>2</sub> x + log<sub>2</sub>(x−2) &gt; 3 ⟺ x &gt; k.",ans:4,exp:"x(x−2)&gt;8; x²−2x−8&gt;0; con C.E. x&gt;2: x&gt;4."}
+  ,{t:"num",q:"log<sub>3</sub>(x+2) &gt; log<sub>3</sub> 4 ⟺ x &gt; k.",ans:2,exp:"x+2&gt;4 ⟹ x&gt;2."}
+  ,{t:"mc",q:"La disequazione log<sub>2</sub> x &gt; log<sub>2</sub>(x+1):",opts:["x &gt; 0","non ha soluzioni","x &gt; 1","x &gt; 2"],ans:1,exp:"x&gt;x+1 ⟹ 0&gt;1: impossibile."}
+  ,{t:"num",q:"log<sub>2</sub>(x+1) &lt; log<sub>2</sub>(2x−1) ⟺ x &gt; k.",ans:2,exp:"x+1&lt;2x−1 ⟹ 2&lt;x; con C.E. x&gt;1/2: x&gt;2."}
+  ,{t:"mc",q:"log<sub>1/4</sub> x &gt; 0 equivale a:",opts:["x &gt; 1","0 &lt; x &lt; 1","x &lt; 0","x &gt; 4"],ans:1,exp:"0=log<sub>1/4</sub>1; base&lt;1 inverte: x&lt;1; con C.E. 0&lt;x&lt;1."}
+  ,{t:"num",q:"log<sub>5</sub>(x+3) ≤ log<sub>5</sub>(2x) ⟺ x ≥ k.",ans:3,exp:"x+3≤2x ⟹ x≥3; C.E.: x&gt;0. ✓"}
+  ,{t:"num",q:"log<sub>2</sub>(x+4) &gt; 5 ⟺ x &gt; k.",ans:28,exp:"x+4&gt;32 ⟹ x&gt;28."}
+  ,{t:"mc",q:"Con 0&lt;a&lt;1, la disequazione log<sub>a</sub> f &lt; log<sub>a</sub> g si risolve:",opts:["con f&lt;g e C.E.","con f&gt;g e C.E.","senza C.E.","con f=g"],ans:1,exp:"Base&lt;1 (decrescente) inverte: f&gt;g, più le C.E."}
+  ,{t:"num",q:"log<sub>3</sub>(2x+1) &lt; 2 ⟺ x &lt; k  (con C.E. x &gt; −1/2).",ans:4,exp:"2x+1&lt;9 ⟹ x&lt;4."}
+  ,{t:"num",q:"log<sub>1/3</sub>(x−1) &gt; 1 ⟺ 1 &lt; x &lt; k. Quanto vale k?",ans:1.333,tol:0.01,exp:"1=log<sub>1/3</sub>(1/3); base&lt;1 inverte: x−1&lt;1/3 ⟹ x&lt;4/3; con C.E. x&gt;1: 1&lt;x&lt;4/3."}
 ]
 };
+QUIZ.finale=[...QUIZ.basi,...QUIZ.eqesp,...QUIZ.eqlog,...QUIZ.disesp,...QUIZ.dislog];
 
 const QSEC=Object.keys(QUIZ);
+const DECK={basi:10,eqesp:10,eqlog:10,disesp:10,dislog:10,finale:20};
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+function newDeck(s){const n=DECK[s]||10;return shuffle(QUIZ[s]).slice(0,n);}
 const qz={};
-QSEC.forEach(s=>qz[s]={idx:0,score:0,answered:false,done:false,reviewing:false,rec:[]});
+QSEC.forEach(s=>qz[s]={idx:0,score:0,answered:false,done:false,reviewing:false,rec:[],deck:newDeck(s)});
 
 function renderQuiz(s){
   const el=document.getElementById('qz-'+s); if(!el) return;
-  const st=qz[s], qs=QUIZ[s], total=qs.length;
+  const st=qz[s], qs=st.deck, total=qs.length;
   let body;
   if(st.reviewing){ body=renderReview(s); }
   else if(st.done){
@@ -1054,10 +1169,10 @@ function answerNum(s){
 }
 function nextQuiz(s){
   const st=qz[s]; st.idx++; st.answered=false;
-  if(st.idx>=QUIZ[s].length) st.done=true;
+  if(st.idx>=st.deck.length) st.done=true;
   renderQuiz(s);
 }
-function restartQuiz(s){ qz[s]={idx:0,score:0,answered:false,done:false,reviewing:false,rec:[]}; renderQuiz(s); }
+function restartQuiz(s){ qz[s]={idx:0,score:0,answered:false,done:false,reviewing:false,rec:[],deck:newDeck(s)}; renderQuiz(s); }
 function reviewQuiz(s){ qz[s].reviewing=true; renderQuiz(s); }
 function closeReview(s){ qz[s].reviewing=false; renderQuiz(s); }
 function renderReview(s){
